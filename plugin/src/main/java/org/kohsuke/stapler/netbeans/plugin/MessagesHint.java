@@ -60,6 +60,9 @@ public class MessagesHint {
     @TriggerTreeKind({Tree.Kind.STRING_LITERAL, Tree.Kind.PLUS})
     @Messages("ERR_MessagesHint=Hardcoded string")
     public static ErrorDescription hardcodedString(HintContext ctx) {
+        if (ctx.getInfo().getClasspathInfo().getClassPath(ClasspathInfo.PathKind.COMPILE).findResource("org/jvnet/localizer/LocaleProvider.class") == null) {
+            return null;
+        }
         FileObject messagesProperties = ctx.getInfo().getClasspathInfo().getClassPath(ClasspathInfo.PathKind.SOURCE).findResource(ctx.getInfo().getCompilationUnit().getPackageName().toString().replace('.', '/') + "/Messages.properties");
         if (messagesProperties == null) {
             return null;

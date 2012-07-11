@@ -32,6 +32,19 @@ import org.openide.filesystems.FileUtil;
 
 public class MessagesHintTest {
 
+    @Test public void noLocalizer() throws Exception {
+        HintTest.create()
+                .input("package test;\n"
+                + "public class Test {\n"
+                + "    void m() {\n"
+                + "        String s = \"hello\";\n"
+                + "    }\n"
+                + "}\n")
+                .input("test/Messages.properties", "", false)
+                .run(MessagesHint.class)
+                .assertWarnings();
+    }
+
     @Test public void simpleString() throws Exception {
         HintTest.create().classpath(cp())
                 .input("package test;\n"
@@ -57,7 +70,6 @@ public class MessagesHintTest {
     // XXX existing key with similar name means uniquify
     // XXX compound string with message formats
     // XXX "'" in string must be escaped for use with MessageFormat
-    // XXX no LocaleProvider in CP
     // XXX no Messages.properties initially
     // XXX adds to existing Messages.properties with formatting intact
     // XXX other stuff being added, not strings
