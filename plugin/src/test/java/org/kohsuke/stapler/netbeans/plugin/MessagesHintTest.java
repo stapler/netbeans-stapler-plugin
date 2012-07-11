@@ -50,9 +50,11 @@ public class MessagesHintTest {
                 + "        String s = Messages.Test_hello();\n"
                 + "    }\n"
                 + "}\n")
-                .assertVerbatimOutput("test/Messages.properties", "Test.hello=hello");
+                .assertVerbatimOutput("test/Messages.properties", "Test.hello=hello\n");
     }
 
+    // XXX unfriendly chars in text converted to some sort of reasonable key
+    // XXX existing key with similar name means uniquify
     // XXX compound string with message formats
     // XXX "'" in string must be escaped for use with MessageFormat
     // XXX no LocaleProvider in CP

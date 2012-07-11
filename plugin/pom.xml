@@ -44,6 +44,16 @@
             <version>${netbeans.version}</version>
         </dependency>
         <dependency>
+            <artifactId>org-openide-filesystems</artifactId>
+            <groupId>org.netbeans.api</groupId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>org-netbeans-api-java-classpath</artifactId>
+            <groupId>org.netbeans.api</groupId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-libs-javacapi</artifactId>
             <version>${netbeans.version}</version>

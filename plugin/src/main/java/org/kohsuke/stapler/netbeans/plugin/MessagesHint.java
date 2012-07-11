@@ -24,6 +24,9 @@
 
 package org.kohsuke.stapler.netbeans.plugin;
 
+import com.sun.source.tree.ClassTree;
+import com.sun.source.tree.ExpressionTree;
+import com.sun.source.tree.LiteralTree;
 import org.netbeans.api.java.source.CompilationInfo;
 import org.netbeans.spi.editor.hints.ErrorDescription;
 import org.netbeans.spi.editor.hints.Fix;
@@ -36,6 +39,16 @@ import org.netbeans.spi.java.hints.TriggerTreeKind;
 import org.openide.util.NbBundle.Messages;
 import com.sun.source.tree.Tree;
 import com.sun.source.util.TreePath;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Collections;
+import java.util.List;
+import org.netbeans.api.java.source.ClasspathInfo;
+import org.netbeans.api.java.source.TreeMaker;
+import org.openide.filesystems.FileObject;
+import org.openide.util.EditableProperties;
+
+// See: https://wiki.jenkins-ci.org/display/JENKINS/Internationalization
 
 @Hint(displayName = "#DN_MessagesHint", description = "#DESC_MessagesHint", category = "general", severity=Severity.HINT)
 @Messages({
@@ -47,14 +60,21 @@ public class MessagesHint {
     @TriggerTreeKind({Tree.Kind.STRING_LITERAL, Tree.Kind.PLUS})
     @Messages("ERR_MessagesHint=Hardcoded string")
     public static ErrorDescription hardcodedString(HintContext ctx) {
-        Fix fix = new FixImpl(ctx.getInfo(), ctx.getPath()).toEditorFix();
+        FileObject messagesProperties = ctx.getInfo().getClasspathInfo().getClassPath(ClasspathInfo.PathKind.SOURCE).findResource(ctx.getInfo().getCompilationUnit().getPackageName().toString().replace('.', '/') + "/Messages.properties");
+        if (messagesProperties == null) {
+            return null;
+        }
+        Fix fix = new FixImpl(ctx.getInfo(), ctx.getPath(), messagesProperties).toEditorFix();
         return ErrorDescriptionFactory.forName(ctx, ctx.getPath(), Bundle.ERR_MessagesHint(), fix);
     }
 
     private static final class FixImpl extends JavaFix {
 
-        FixImpl(CompilationInfo info, TreePath tp) {
+        private final FileObject messagesProperties;
+
+        FixImpl(CompilationInfo info, TreePath tp, FileObject messagesProperties) {
             super(info, tp);
+            this.messagesProperties = messagesProperties;
         }
         
         @Messages("FIX_MessagesHint=Replace with Messages from localizer.java.net")
@@ -62,8 +82,29 @@ public class MessagesHint {
             return Bundle.FIX_MessagesHint();
         }
         
-        @Override protected void performRewrite(TransformationContext ctx) {
-            // XXX
+        @Override protected void performRewrite(TransformationContext ctx) throws Exception {
+            EditableProperties ep = new EditableProperties(true);
+            InputStream is = ctx.getResourceContent(messagesProperties);
+            try {
+                ep.load(is);
+            } finally {
+                is.close();
+            }
+            LiteralTree string = (LiteralTree) ctx.getPath().getLeaf();
+            String text = (String) string.getValue();
+            String cname = ((ClassTree) ctx.getWorkingCopy().getCompilationUnit().getTypeDecls().get(0)).getSimpleName().toString();
+            String key = cname + '.' + text;
+            String id = toJavaIdentifier(key);
+            ep.put(key, text);
+            OutputStream os = ctx.getResourceOutput(messagesProperties);
+            try {
+                ep.store(os);
+            } finally {
+                os.close();
+            }
+            TreeMaker make = ctx.getWorkingCopy().getTreeMaker();
+            List<ExpressionTree> args = Collections.<ExpressionTree>emptyList();
+            ctx.getWorkingCopy().rewrite(string, make.MethodInvocation(Collections.<ExpressionTree>emptyList(), make.MemberSelect(make.Identifier("Messages"), id), args));
         }
 
     }
