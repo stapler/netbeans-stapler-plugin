@@ -8,6 +8,7 @@
     <packaging>pom</packaging>
 
     <name>Stapler/NetBeans</name>
+    <url>https://wiki.jenkins-ci.org/display/JENKINS/NetBeans+plugin+for+Stapler</url>
     <licenses>
         <license>
             <name>MIT</name>
