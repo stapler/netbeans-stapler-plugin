@@ -24,6 +24,7 @@
 
 package org.kohsuke.stapler.netbeans.plugin;
 
+import com.sun.source.tree.BinaryTree;
 import com.sun.source.tree.ClassTree;
 import com.sun.source.tree.ExpressionTree;
 import com.sun.source.tree.LiteralTree;
@@ -41,8 +42,10 @@ import com.sun.source.tree.Tree;
 import com.sun.source.util.TreePath;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import org.netbeans.api.annotations.common.NullUnknown;
 import org.netbeans.api.java.source.ClasspathInfo;
 import org.netbeans.api.java.source.TreeMaker;
 import org.openide.filesystems.FileObject;
@@ -62,6 +65,9 @@ public class MessagesHint {
     public static ErrorDescription hardcodedString(HintContext ctx) {
         if (ctx.getInfo().getClasspathInfo().getClassPath(ClasspathInfo.PathKind.COMPILE).findResource("org/jvnet/localizer/LocaleProvider.class") == null) {
             return null;
+        }
+        if (ctx.getPath().getParentPath().getLeaf().getKind() == Tree.Kind.PLUS) {
+            return null; // only show on outermost enclosing tree
         }
         FileObject messagesProperties = ctx.getInfo().getClasspathInfo().getClassPath(ClasspathInfo.PathKind.SOURCE).findResource(ctx.getInfo().getCompilationUnit().getPackageName().toString().replace('.', '/') + "/Messages.properties");
         if (messagesProperties == null) {
@@ -93,12 +99,11 @@ public class MessagesHint {
             } finally {
                 is.close();
             }
-            LiteralTree string = (LiteralTree) ctx.getPath().getLeaf();
-            String text = (String) string.getValue();
+            Text text = textOf((ExpressionTree) ctx.getPath().getLeaf(), true, 0);
             String cname = ((ClassTree) ctx.getWorkingCopy().getCompilationUnit().getTypeDecls().get(0)).getSimpleName().toString();
-            String key = cname + '.' + text;
+            String key = cname + '.' + text.literal.replaceAll("[^a-zA-Z0-9_]+", "_");
             String id = toJavaIdentifier(key);
-            ep.put(key, text);
+            ep.put(key, text.messageFormat);
             OutputStream os = ctx.getResourceOutput(messagesProperties);
             try {
                 ep.store(os);
@@ -106,10 +111,41 @@ public class MessagesHint {
                 os.close();
             }
             TreeMaker make = ctx.getWorkingCopy().getTreeMaker();
-            List<ExpressionTree> args = Collections.<ExpressionTree>emptyList();
-            ctx.getWorkingCopy().rewrite(string, make.MethodInvocation(Collections.<ExpressionTree>emptyList(), make.MemberSelect(make.Identifier("Messages"), id), args));
+            ctx.getWorkingCopy().rewrite(ctx.getPath().getLeaf(), make.MethodInvocation(Collections.<ExpressionTree>emptyList(), make.MemberSelect(make.Identifier("Messages"), id), text.params));
         }
 
+    }
+
+    private static class Text {
+        final String messageFormat;
+        final String literal;
+        final List<ExpressionTree> params;
+        Text(String messageFormat, String literal, List<ExpressionTree> params) {
+            this.messageFormat = messageFormat;
+            this.literal = literal;
+            this.params = params;
+        }
+    }
+
+    private static @NullUnknown Text textOf(ExpressionTree tree, boolean topLevel, int idx) {
+        switch (tree.getKind()) {
+        case STRING_LITERAL:
+            String text = (String) ((LiteralTree) tree).getValue();
+            return new Text(text, text, Collections.<ExpressionTree>emptyList());
+        case PLUS:
+            BinaryTree plus = (BinaryTree) tree;
+            Text lhs = textOf(plus.getLeftOperand(), false, idx);
+            Text rhs = textOf(plus.getRightOperand(), false, idx + lhs.params.size());
+            List<ExpressionTree> exprs = new ArrayList<ExpressionTree>(lhs.params);
+            exprs.addAll(rhs.params);
+            return new Text(lhs.messageFormat + rhs.messageFormat, lhs.literal + rhs.literal, exprs);
+        default:
+            if (topLevel) {
+                return null;
+            } else {
+                return new Text("{" + idx + "}", "", Collections.singletonList(tree));
+            }
+        }
     }
 
     // Cf. org.jvnet.localizer.Generator

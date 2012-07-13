@@ -66,9 +66,51 @@ public class MessagesHintTest {
                 .assertVerbatimOutput("test/Messages.properties", "Test.hello=hello\n");
     }
 
-    // XXX unfriendly chars in text converted to some sort of reasonable key
-    // XXX existing key with similar name means uniquify
-    // XXX compound string with message formats
+    @Test public void compoundString() throws Exception {
+        HintTest.create().classpath(cp())
+                .input("package test;\n"
+                + "public class Test {\n"
+                + "    void m(int count) {\n"
+                + "        String s = \"hello \" + count + \" times\";\n"
+                + "    }\n"
+                + "}\n")
+                .input("test/Messages.properties", "", false)
+                .run(MessagesHint.class)
+                .assertWarnings("3:19-3:46:hint:" + Bundle.ERR_MessagesHint())
+                .findWarning("3:19-3:46:hint:" + Bundle.ERR_MessagesHint())
+                .applyFix()
+                .assertOutput("package test;\n"
+                + "public class Test {\n"
+                + "    void m(int count) {\n"
+                + "        String s = Messages.Test_hello_times(count);\n"
+                + "    }\n"
+                + "}\n")
+                .assertVerbatimOutput("test/Messages.properties", "Test.hello_times=hello {0} times\n");
+    }
+
+    @Test public void compoundString2() throws Exception {
+        HintTest.create().classpath(cp())
+                .input("package test;\n"
+                + "public class Test {\n"
+                + "    void m(String name, int count) {\n"
+                + "        String s = \"hello \" + name + \", \" + count + \" times\";\n"
+                + "    }\n"
+                + "}\n")
+                .input("test/Messages.properties", "", false)
+                .run(MessagesHint.class)
+                .assertWarnings("3:19-3:60:hint:" + Bundle.ERR_MessagesHint())
+                .findWarning("3:19-3:60:hint:" + Bundle.ERR_MessagesHint())
+                .applyFix()
+                .assertOutput("package test;\n"
+                + "public class Test {\n"
+                + "    void m(String name, int count) {\n"
+                + "        String s = Messages.Test_hello_times(name, count);\n"
+                + "    }\n"
+                + "}\n")
+                .assertVerbatimOutput("test/Messages.properties", "Test.hello_times=hello {0}, {1} times\n");
+    }
+
+    // XXX existing key with similar name means uniquify (but preferably prompt user)
     // XXX "'" in string must be escaped for use with MessageFormat
     // XXX no Messages.properties initially
     // XXX adds to existing Messages.properties with formatting intact
