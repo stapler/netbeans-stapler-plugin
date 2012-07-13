@@ -109,7 +109,7 @@ public class MessagesHint {
             }
             Text text = textOf((ExpressionTree) ctx.getPath().getLeaf(), true, 0);
             String cname = ((ClassTree) ctx.getWorkingCopy().getCompilationUnit().getTypeDecls().get(0)).getSimpleName().toString();
-            String key = cname + '.' + text.literal.replaceAll("[^a-zA-Z0-9_]+", "_").toLowerCase(Locale.ENGLISH);
+            String key = cname + '.' + text.key();
             String id = toJavaIdentifier(key);
             ep.put(key, text.messageFormat);
             OutputStream os = ctx.getResourceOutput(messagesProperties);
@@ -140,6 +140,13 @@ public class MessagesHint {
                 blanks[i] = "";
             }
             return literal.equals(MessageFormat.format(messageFormat, blanks));
+        }
+        String key() {
+            String k = literal.replaceAll("[^a-zA-Z0-9_]+", "_").toLowerCase(Locale.ENGLISH);
+            if (k.length() > 40) {
+                k = k.substring(0, 40);
+            }
+            return k;
         }
     }
 

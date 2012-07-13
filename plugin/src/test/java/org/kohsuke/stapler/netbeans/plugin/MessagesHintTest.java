@@ -168,6 +168,27 @@ public class MessagesHintTest {
                 .assertVerbatimOutput("test/Messages.properties", "Test.don_t_kill_me_=Don''t kill me :-'{'\n");
     }
 
+    @Test public void veryLongMessage() throws Exception {
+        HintTest.create().classpath(cp())
+                .input("package test;\n"
+                + "public class Test {\n"
+                + "    String description() {\n"
+                + "        return \"What would you say if I ran this hint out of turn? Would you stand up and revert the change on me?\";\n"
+                + "    }\n"
+                + "}\n")
+                .input("test/Messages.properties", "", false)
+                .run(MessagesHint.class)
+                .findWarning("3:15-3:115:hint:" + Bundle.ERR_MessagesHint())
+                .applyFix()
+                .assertOutput("package test;\n"
+                + "public class Test {\n"
+                + "    String description() {\n"
+                + "        return Messages.Test_what_would_you_say_if_i_ran_this_hint_ou();\n"
+                + "    }\n"
+                + "}\n")
+                .assertVerbatimOutput("test/Messages.properties", "Test.what_would_you_say_if_i_ran_this_hint_ou=What would you say if I ran this hint out of turn? Would you stand up and revert the change on me?\n");
+    }
+
     // XXX existing key with similar name means uniquify (but preferably prompt user)
     // XXX no Messages.properties initially
     // XXX adds to existing Messages.properties with formatting intact
