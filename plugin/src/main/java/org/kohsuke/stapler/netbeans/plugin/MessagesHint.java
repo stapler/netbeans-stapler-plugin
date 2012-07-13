@@ -42,9 +42,11 @@ import com.sun.source.tree.Tree;
 import com.sun.source.util.TreePath;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import org.netbeans.api.annotations.common.NonNull;
 import org.netbeans.api.java.source.ClasspathInfo;
 import org.netbeans.api.java.source.TreeMaker;
@@ -70,9 +72,11 @@ public class MessagesHint {
         if (path.getParentPath().getLeaf().getKind() == Tree.Kind.PLUS) {
             return null; // only show on outermost enclosing tree
         }
-        if (textOf((ExpressionTree) path.getLeaf(), true, 0).literal.isEmpty()) {
+        Text text = textOf((ExpressionTree) path.getLeaf(), true, 0);
+        if (text.literal.isEmpty()) {
             return null; // no strings involved
         }
+        assert text.properlyQuoted() : text.messageFormat;
         FileObject messagesProperties = ctx.getInfo().getClasspathInfo().getClassPath(ClasspathInfo.PathKind.SOURCE).findResource(ctx.getInfo().getCompilationUnit().getPackageName().toString().replace('.', '/') + "/Messages.properties");
         if (messagesProperties == null) {
             return null;
@@ -105,7 +109,7 @@ public class MessagesHint {
             }
             Text text = textOf((ExpressionTree) ctx.getPath().getLeaf(), true, 0);
             String cname = ((ClassTree) ctx.getWorkingCopy().getCompilationUnit().getTypeDecls().get(0)).getSimpleName().toString();
-            String key = cname + '.' + text.literal.replaceAll("[^a-zA-Z0-9_]+", "_");
+            String key = cname + '.' + text.literal.replaceAll("[^a-zA-Z0-9_]+", "_").toLowerCase(Locale.ENGLISH);
             String id = toJavaIdentifier(key);
             ep.put(key, text.messageFormat);
             OutputStream os = ctx.getResourceOutput(messagesProperties);
@@ -129,13 +133,21 @@ public class MessagesHint {
             this.literal = literal;
             this.params = params;
         }
+        /** only call on a top-level Text */
+        boolean properlyQuoted() {
+            Object[] blanks = new String[params.size()];
+            for (int i = 0; i < blanks.length; i++) {
+                blanks[i] = "";
+            }
+            return literal.equals(MessageFormat.format(messageFormat, blanks));
+        }
     }
 
     private static @NonNull Text textOf(ExpressionTree tree, boolean topLevel, int idx) {
         switch (tree.getKind()) {
         case STRING_LITERAL:
             String text = (String) ((LiteralTree) tree).getValue();
-            return new Text(text, text, Collections.<ExpressionTree>emptyList());
+            return new Text(text.replace("'", "''").replace("{", "'{'"), text, Collections.<ExpressionTree>emptyList());
         case PLUS:
             BinaryTree plus = (BinaryTree) tree;
             Text lhs = textOf(plus.getLeftOperand(), false, idx);

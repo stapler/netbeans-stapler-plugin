@@ -123,8 +123,52 @@ public class MessagesHintTest {
                 .assertWarnings();
     }
 
+    @Test public void messageFormatMetaChars() throws Exception {
+        HintTest.create().classpath(cp())
+                .input("package test;\n"
+                + "public class Test {\n"
+                + "    String warning(String name) {\n"
+                + "        return \"Don't kill \" + name + \" :-{\";\n"
+                + "    }\n"
+                + "}\n")
+                .input("test/Messages.properties", "", false)
+                .run(MessagesHint.class)
+                .assertWarnings("3:15-3:44:hint:" + Bundle.ERR_MessagesHint())
+                .findWarning("3:15-3:44:hint:" + Bundle.ERR_MessagesHint())
+                .applyFix()
+                .assertOutput("package test;\n"
+                + "public class Test {\n"
+                + "    String warning(String name) {\n"
+                + "        return Messages.Test_don_t_kill_(name);\n"
+                + "    }\n"
+                + "}\n")
+                .assertVerbatimOutput("test/Messages.properties", "Test.don_t_kill_=Don''t kill {0} :-'{'\n");
+    }
+
+    /** localizer uses MessageFormat even there are no parameters, unlike (say) NbBundle.Messages */
+    @Test public void noParamMessageFormatMetaChars() throws Exception {
+        HintTest.create().classpath(cp())
+                .input("package test;\n"
+                + "public class Test {\n"
+                + "    String warning() {\n"
+                + "        return \"Don't kill me :-{\";\n"
+                + "    }\n"
+                + "}\n")
+                .input("test/Messages.properties", "", false)
+                .run(MessagesHint.class)
+                .assertWarnings("3:15-3:34:hint:" + Bundle.ERR_MessagesHint())
+                .findWarning("3:15-3:34:hint:" + Bundle.ERR_MessagesHint())
+                .applyFix()
+                .assertOutput("package test;\n"
+                + "public class Test {\n"
+                + "    String warning() {\n"
+                + "        return Messages.Test_don_t_kill_me_();\n"
+                + "    }\n"
+                + "}\n")
+                .assertVerbatimOutput("test/Messages.properties", "Test.don_t_kill_me_=Don''t kill me :-'{'\n");
+    }
+
     // XXX existing key with similar name means uniquify (but preferably prompt user)
-    // XXX "'" in string must be escaped for use with MessageFormat
     // XXX no Messages.properties initially
     // XXX adds to existing Messages.properties with formatting intact
 
