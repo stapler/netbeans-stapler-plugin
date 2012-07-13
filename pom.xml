@@ -8,6 +8,10 @@
     <packaging>pom</packaging>
 
     <name>Stapler/NetBeans</name>
+    <organization>
+        <name>CloudBees</name>
+        <url>http://www.cloudbees.com/</url>
+    </organization>
     <url>https://wiki.jenkins-ci.org/display/JENKINS/NetBeans+plugin+for+Stapler</url>
     <licenses>
         <license>
