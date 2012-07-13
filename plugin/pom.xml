@@ -5,12 +5,13 @@
         <groupId>org.kohsuke.stapler.netbeans</groupId>
         <artifactId>parent</artifactId>
         <version>1.0-SNAPSHOT</version>
-  </parent>
+    </parent>
     <artifactId>plugin</artifactId>
     <packaging>nbm</packaging>
 
     <name>Stapler Support</name>
     <description>Support for Stapler, used mainly by Hudson/Jenkins. Currently includes a hint to refactor hardcoded strings to Messages.</description>
+    <url>https://wiki.jenkins-ci.org/display/JENKINS/NetBeans+plugin+for+Stapler</url>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
