@@ -45,7 +45,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import org.netbeans.api.annotations.common.NullUnknown;
+import org.netbeans.api.annotations.common.NonNull;
 import org.netbeans.api.java.source.ClasspathInfo;
 import org.netbeans.api.java.source.TreeMaker;
 import org.openide.filesystems.FileObject;
@@ -66,15 +66,19 @@ public class MessagesHint {
         if (ctx.getInfo().getClasspathInfo().getClassPath(ClasspathInfo.PathKind.COMPILE).findResource("org/jvnet/localizer/LocaleProvider.class") == null) {
             return null;
         }
-        if (ctx.getPath().getParentPath().getLeaf().getKind() == Tree.Kind.PLUS) {
+        TreePath path = ctx.getPath();
+        if (path.getParentPath().getLeaf().getKind() == Tree.Kind.PLUS) {
             return null; // only show on outermost enclosing tree
+        }
+        if (textOf((ExpressionTree) path.getLeaf(), true, 0).literal.isEmpty()) {
+            return null; // no strings involved
         }
         FileObject messagesProperties = ctx.getInfo().getClasspathInfo().getClassPath(ClasspathInfo.PathKind.SOURCE).findResource(ctx.getInfo().getCompilationUnit().getPackageName().toString().replace('.', '/') + "/Messages.properties");
         if (messagesProperties == null) {
             return null;
         }
-        Fix fix = new FixImpl(ctx.getInfo(), ctx.getPath(), messagesProperties).toEditorFix();
-        return ErrorDescriptionFactory.forName(ctx, ctx.getPath(), Bundle.ERR_MessagesHint(), fix);
+        Fix fix = new FixImpl(ctx.getInfo(), path, messagesProperties).toEditorFix();
+        return ErrorDescriptionFactory.forName(ctx, path, Bundle.ERR_MessagesHint(), fix);
     }
 
     private static final class FixImpl extends JavaFix {
@@ -127,7 +131,7 @@ public class MessagesHint {
         }
     }
 
-    private static @NullUnknown Text textOf(ExpressionTree tree, boolean topLevel, int idx) {
+    private static @NonNull Text textOf(ExpressionTree tree, boolean topLevel, int idx) {
         switch (tree.getKind()) {
         case STRING_LITERAL:
             String text = (String) ((LiteralTree) tree).getValue();
@@ -140,11 +144,8 @@ public class MessagesHint {
             exprs.addAll(rhs.params);
             return new Text(lhs.messageFormat + rhs.messageFormat, lhs.literal + rhs.literal, exprs);
         default:
-            if (topLevel) {
-                return null;
-            } else {
-                return new Text("{" + idx + "}", "", Collections.singletonList(tree));
-            }
+            assert !topLevel;
+            return new Text("{" + idx + "}", "", Collections.singletonList(tree));
         }
     }
 

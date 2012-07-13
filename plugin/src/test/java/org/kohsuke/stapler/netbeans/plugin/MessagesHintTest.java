@@ -110,11 +110,23 @@ public class MessagesHintTest {
                 .assertVerbatimOutput("test/Messages.properties", "Test.hello_times=hello {0}, {1} times\n");
     }
 
+    @Test public void unrelatedAddition() throws Exception {
+        HintTest.create().classpath(cp())
+                .input("package test;\n"
+                + "public class Test {\n"
+                + "    void m(int w, int h) {\n"
+                + "        int perimeter = 2 * (w + h);\n"
+                + "    }\n"
+                + "}\n")
+                .input("test/Messages.properties", "", false)
+                .run(MessagesHint.class)
+                .assertWarnings();
+    }
+
     // XXX existing key with similar name means uniquify (but preferably prompt user)
     // XXX "'" in string must be escaped for use with MessageFormat
     // XXX no Messages.properties initially
     // XXX adds to existing Messages.properties with formatting intact
-    // XXX other stuff being added, not strings
 
     private URL cp() {
         URL cp = LocaleProvider.class.getProtectionDomain().getCodeSource().getLocation();
