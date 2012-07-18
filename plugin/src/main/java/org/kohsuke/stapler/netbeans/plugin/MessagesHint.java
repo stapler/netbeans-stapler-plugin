@@ -50,10 +50,9 @@ import java.util.Locale;
 import org.netbeans.api.annotations.common.NonNull;
 import org.netbeans.api.java.source.ClasspathInfo;
 import org.netbeans.api.java.source.TreeMaker;
+import org.openide.awt.StatusDisplayer;
 import org.openide.filesystems.FileObject;
 import org.openide.util.EditableProperties;
-
-// See: https://wiki.jenkins-ci.org/display/JENKINS/Internationalization
 
 @Hint(displayName = "#DN_MessagesHint", description = "#DESC_MessagesHint", category = "general", severity=Severity.HINT)
 @Messages({
@@ -77,29 +76,29 @@ public class MessagesHint {
             return null; // no strings involved
         }
         assert text.properlyQuoted() : text.messageFormat;
-        FileObject messagesProperties = ctx.getInfo().getClasspathInfo().getClassPath(ClasspathInfo.PathKind.SOURCE).findResource(ctx.getInfo().getCompilationUnit().getPackageName().toString().replace('.', '/') + "/Messages.properties");
-        if (messagesProperties == null) {
-            return null;
-        }
-        Fix fix = new FixImpl(ctx.getInfo(), path, messagesProperties).toEditorFix();
+        Fix fix = new FixImpl(ctx.getInfo(), path).toEditorFix();
         return ErrorDescriptionFactory.forName(ctx, path, Bundle.ERR_MessagesHint(), fix);
     }
 
     private static final class FixImpl extends JavaFix {
 
-        private final FileObject messagesProperties;
-
-        FixImpl(CompilationInfo info, TreePath tp, FileObject messagesProperties) {
+        FixImpl(CompilationInfo info, TreePath tp) {
             super(info, tp);
-            this.messagesProperties = messagesProperties;
         }
         
         @Messages("FIX_MessagesHint=Replace with Messages from localizer.java.net")
         @Override protected String getText() {
             return Bundle.FIX_MessagesHint();
         }
-        
+
+        @Messages({"# {0} - resource path", "MessagesHint.create_resource=You need to create a resource {0} to use this hint."})
         @Override protected void performRewrite(TransformationContext ctx) throws Exception {
+            String resource = ctx.getWorkingCopy().getCompilationUnit().getPackageName().toString().replace('.', '/') + "/Messages.properties";
+            FileObject messagesProperties = ctx.getWorkingCopy().getClasspathInfo().getClassPath(ClasspathInfo.PathKind.SOURCE).findResource(resource);
+            if (messagesProperties == null) {
+                StatusDisplayer.getDefault().setStatusText(Bundle.MessagesHint_create_resource(resource));
+                return;
+            }
             EditableProperties ep = new EditableProperties(true);
             InputStream is = ctx.getResourceContent(messagesProperties);
             try {

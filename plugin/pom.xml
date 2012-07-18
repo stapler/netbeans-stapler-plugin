@@ -46,6 +46,11 @@
             <version>${netbeans.version}</version>
         </dependency>
         <dependency>
+            <artifactId>org-openide-awt</artifactId>
+            <groupId>org.netbeans.api</groupId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
             <artifactId>org-openide-filesystems</artifactId>
             <groupId>org.netbeans.api</groupId>
             <version>${netbeans.version}</version>
