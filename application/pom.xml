@@ -40,6 +40,12 @@
             <type>pom</type>
         </dependency>
         <dependency>
+            <groupId>org.netbeans.cluster</groupId>
+            <artifactId>nb</artifactId>
+            <version>${netbeans.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-modules-nbjunit</artifactId>
             <version>${netbeans.version}</version>
@@ -58,7 +64,7 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>nbm-maven-plugin</artifactId>
                 <configuration>
-                    <additionalArguments>-J-Xmx640m -J-XX:PermSize=32m</additionalArguments>
+                    <additionalArguments>-J-Xmx640m -J-XX:PermSize=32m -J-XX:MaxPermSize=384m -J-Xss2m -J-Xms32m -J-Dnetbeans.full.hack=true</additionalArguments>
                 </configuration>
             </plugin>
             <plugin>

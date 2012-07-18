@@ -66,6 +66,6 @@
 
     <properties>
         <netbeans.version>RELEASE72-BETA</netbeans.version>
-        <brandingToken>netbeans</brandingToken>
+        <brandingToken>nb</brandingToken>
     </properties>
 </project>
