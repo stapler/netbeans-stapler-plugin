@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="jelly:ojb" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:documentation>
+      <p>A variety of tags for working with the 
+        <a href="http://jakarta.apache.org/ojb/">ObjectBridge</a>persistence engine
+      </p>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="store">
+    <xsd:annotation>
+      <xsd:documentation>
+        <p>This Store tag will store the given object in ObjectBridge usingthe given broker or it will use the parent broker tags broker instance.</p>
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480468 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="value">
+        <xsd:annotation>
+          <xsd:documentation>Sets the value to be persisted</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="broker">
+        <xsd:annotation>
+          <xsd:documentation>Sets the persistence broker instance</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="broker">
+    <xsd:annotation>
+      <xsd:documentation>
+        <p>Tag handler for &lt;Driver&gt;in JSTL, used to createa simple DataSource for prototyping.</p>
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480468 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the variable name to define for this expression</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="broker">
+        <xsd:annotation>
+          <xsd:documentation>Sets the persistence broker instance</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

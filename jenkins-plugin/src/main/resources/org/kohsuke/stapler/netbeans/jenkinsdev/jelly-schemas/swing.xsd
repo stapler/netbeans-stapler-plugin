@@ -1,0 +1,977 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="jelly:swing" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:documentation>
+      <p>The JellySwing Library which is a Jelly Library for creating Rich User Interfaces using Swing via XML markup (a Jelly script)</p>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="tr">
+    <xsd:annotation>
+      <xsd:documentation>Represents a tabular row inside a &lt;tableLayout&gt;tag which mimicks the &lt;tr&gt;HTML tag.
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="td">
+    <xsd:annotation>
+      <xsd:documentation>Represents a tabular cell inside a &lt;tl&gt;tag inside a &lt;tableLayout&gt;tag which mimicks the &lt;td&gt;HTML tag.
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="align">
+        <xsd:annotation>
+          <xsd:documentation>Sets the horizontal alignment to a case insensitive value of {LEFT, CENTER, RIGHT}</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="valign">
+        <xsd:annotation>
+          <xsd:documentation>Sets the vertical alignment to a case insensitive value of {TOP, MIDDLE, BOTTOM}</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="colspan">
+        <xsd:annotation>
+          <xsd:documentation>Sets the number of columns that this cell should span. The default value is 1</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="rowspan">
+        <xsd:annotation>
+          <xsd:documentation>Sets the number of rows that this cell should span. The default value is 1</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="colfill">
+        <xsd:annotation>
+          <xsd:documentation>Sets whether or not this column should allow its component to stretch to fill the space available</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="rowfill">
+        <xsd:annotation>
+          <xsd:documentation>Sets whether or not this row should allow its component to stretch to fill the space available</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="tableModel">
+    <xsd:annotation>
+      <xsd:documentation>Creates a default TableModel using nested tableColumn tags.
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="ignoreUnknownProperties">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="etchedBorder">
+    <xsd:annotation>
+      <xsd:documentation>Creates an etched border.The border will either be exported as a variable defined by the 'var' attributeor will be set on the parent widget's border property
+        <authortag>&lt;a href="mailto:robert@bull-enterprises.com"&gt;Robert McIntosh&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="etchType">
+        <xsd:annotation>
+          <xsd:documentation>Sets the etch type. Must be either EtchedBorder.LOWERED or EtchedBorder.RAISED
+          <paramtag>type</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="highlight">
+        <xsd:annotation>
+          <xsd:documentation>Sets the highlight color
+          <paramtag>highlight</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="top">
+        <xsd:annotation>
+          <xsd:documentation>Sets the shadow color
+          <paramtag>shadow</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the variable to use to expose the new Border object.If this attribute is not set then the parent widget tag will have itsborder property set.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="gridBagLayout">
+    <xsd:annotation>
+      <xsd:documentation>A Layout tag which uses nested &lt;gbc&gt;tags to implement a GridBagLayout
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the variable to use to expose the new LayoutManager object.If this attribute is not set then the parent widget tag will have itslayout property set.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="borderLayout">
+    <xsd:annotation>
+      <xsd:documentation>A Layout tag which uses nested &lt;borderAlign&gt;tags to implement a BorderLayout
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="hgap">
+        <xsd:annotation>
+          <xsd:documentation>Sets the horizontal gap in pixels.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="vgap">
+        <xsd:annotation>
+          <xsd:documentation>Sets the vertical gap in pixels</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the variable to use to expose the new LayoutManager object.If this attribute is not set then the parent widget tag will have itslayout property set.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="gbc">
+    <xsd:annotation>
+      <xsd:documentation>This class represents a java.awt.GridBagConstraintsconstraints as passed inthe second argument of Container.add(Component,Object).It supports inheritence between such tags in the following fashion:
+        <ul><li>either using a
+            <code>basedOn</code>attribute which issupposed to provide a reference to another
+          </li></ul>org.apache.commons.jelly.tags.swing.GbcTag.
+        <li>either using a parent</li>org.apache.commons.jelly.tags.swing.GbcTag. The first version takes precedence.A Grid-bag-constraint inherits from another simply by setting other attributesas is done in org.apache.commons.jelly.tags.swing.impl.GridBagConstraintBean.setBasedOn.
+        <p>In essence, it looks really like nothing else than a bean-class...with</p>org.apache.commons.jelly.tags.swing.GbcTag.getConstraints.Probably a shorter java-source is do-able.
+        <p>TODO: this class should probably be extended with special treatment for dimensionsusing the converter package.</p>
+        <authortag>&lt;a href="mailto:paul@activemath.org"&gt;Paul Libbrecht&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="ignoreUnknownProperties">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="action">
+    <xsd:annotation>
+      <xsd:documentation>Creates a Swing Action which on invocation will execute the body of this tag.The Action is then output as a variable for reuse if the 'var' attribute is specifiedotherwise the action is added to the parent JellySwing widget.
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="ignoreUnknownProperties">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="tableModelColumn">
+    <xsd:annotation>
+      <xsd:documentation>Creates a default TableColumnModel.
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="ignoreUnknownProperties">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="cardLayout">
+    <xsd:annotation>
+      <xsd:documentation>Implements CardLayout. Takes parameters hgap, vgap per the class. You canset the "var" attribute of this tag, this will store the layout managerin that context attribute, for later use.
+        <authortag>Hans Gilde</authortag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="hgap">
+        <xsd:annotation>
+          <xsd:documentation>
+            <paramtag>hgap The hgap to set.</paramtag>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="vgap">
+        <xsd:annotation>
+          <xsd:documentation>
+            <paramtag>vgap The vgap to set.</paramtag>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the variable to use to expose the new LayoutManager object.If this attribute is not set then the parent widget tag will have itslayout property set.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="component">
+    <xsd:annotation>
+      <xsd:documentation>This tag creates a Swing component and adds it to its parent tag, optionally declaring thiscomponent as a variable if the
+        <i>var</i>attribute is specified.
+        <p>This tag clears the reference to it's bean after doTag runs.This means that child tags can access the component (bean) normallyduring execution but should not hold a reference to thistag after their doTag completes.</p>
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="action">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Action of this component</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="font">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Font of this component</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="border">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Border of this component</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="layout">
+        <xsd:annotation>
+          <xsd:documentation>Sets the LayoutManager of this component</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagName">
+        <xsd:annotation>
+          <xsd:documentation>Puts this tag into the context under the given nameallowing later calls to org.apache.commons.jelly.tags.swing.ComponentTag.rerun().For example, it makes sense to use ${myTag.rerun()} as a childof an
+          <code>action</code>element.
+          <paramtag>the name to be used</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="ignoreUnknownProperties">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="tableLayout">
+    <xsd:annotation>
+      <xsd:documentation>A Layout tag which mimicks the table, tr and td tags of HTML.
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the variable to use to expose the new LayoutManager object.If this attribute is not set then the parent widget tag will have itslayout property set.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="constraint">
+    <xsd:annotation>
+      <xsd:documentation>This class represents a layout-manager constraints as passed inthe second argument of Container.add(Component,Object).
+        <p>In essence, it looks really like nothing else than a bean-class...with</p>org.apache.commons.jelly.tags.swing.ConstraintTag.getConstraintObject.Probably a shorter java-source is do-able.
+        <p>TODO: this class should probably be extended with special treatment for dimensiosusing the converter package.</p>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="dynaBean">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="font">
+    <xsd:annotation>
+      <xsd:documentation>Creates an Font and attaches it to the parent component or exports the font asa reusable variable that can be attached to multiple widgets.
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="borderAlign">
+    <xsd:annotation>
+      <xsd:documentation>Represents a layout of a child component within its parent &lt;borderLayout&gt;layout.
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="align">
+        <xsd:annotation>
+          <xsd:documentation>Sets the alignment of the child component which is a case insensitive valueof {NORTH, SOUTH, EAST, WEST, CENTER} which defaults to CENTER</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="keyListener">
+    <xsd:annotation>
+      <xsd:documentation/>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="pressed">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="released">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="typed">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="emptyBorder">
+    <xsd:annotation>
+      <xsd:documentation>Creates an empty border.The border will either be exported as a variable defined by the 'var' attributeor will be set on the parent widget's border property
+        <authortag>&lt;a href="mailto:robert@bull-enterprises.com"&gt;Robert McIntosh&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="left">
+        <xsd:annotation>
+          <xsd:documentation>Sets the left inset
+          <paramtag>left</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="right">
+        <xsd:annotation>
+          <xsd:documentation>Sets the right inset
+          <paramtag>right</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="top">
+        <xsd:annotation>
+          <xsd:documentation>Sets the top inset
+          <paramtag>top</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="bottom">
+        <xsd:annotation>
+          <xsd:documentation>Sets the bottom inset
+          <paramtag>bottom</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the variable to use to expose the new Border object.If this attribute is not set then the parent widget tag will have itsborder property set.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="titledBorder">
+    <xsd:annotation>
+      <xsd:documentation>Creates a titled border.The border will either be exported as a variable defined by the 'var' attributeor will be set on the parent widget's border property
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="color">
+        <xsd:annotation>
+          <xsd:documentation>Sets the color of the title for this border. Can be set via a nested
+          <color>tag.</color>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="font">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Font to be used by the title. Can be set via a nested
+          <font>tag.</font>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="title">
+        <xsd:annotation>
+          <xsd:documentation>Sets the title text for this border.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="titleJustification">
+        <xsd:annotation>
+          <xsd:documentation>Sets the justification of the title. The String is case insensitive.Possible values are {LEFT, CENTER, RIGHT, LEADING, TRAILING}</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="titlePosition">
+        <xsd:annotation>
+          <xsd:documentation>Sets the position of the title. The String is case insensitive.Possible values are {ABOVE_TOP, TOP, BELOW_TOP, ABOVE_BOTTOM, BOTTOM, BELOW_BOTTOM}</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the variable to use to expose the new Border object.If this attribute is not set then the parent widget tag will have itsborder property set.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="buttonGroup">
+    <xsd:annotation>
+      <xsd:documentation>Implements a ButtonGroup. This tag acts like a Swing componentexcept that adding a component other than an AbstractButton, will be passedthrough to the parent tag. This is meant to make thebuttonGroup easier to use like this:
+        <pre> &lt;panel&gt; &lt;buttonGroup&gt; &lt;panel&gt; &lt;radioButton/&gt; &lt;/panel&gt; &lt;panel&gt; &lt;radioButton/&gt; &lt;/panel&gt; &lt;/buttonGroup&gt; &lt;/panel&gt;</pre>
+        <p>Note that the following construct will silently fail, and shame on s/he who even tried it:
+          <pre> &lt;panel&gt; &lt;buttonGroup&gt; &lt;font .../&gt; &lt;panel&gt; &lt;radioButton/&gt; &lt;/panel&gt; &lt;panel&gt; &lt;radioButton/&gt; &lt;/panel&gt; &lt;/buttonGroup&gt; &lt;/panel&gt;</pre>
+        </p>
+        <authortag>Hans Gilde</authortag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="action">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Action of this component</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="font">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Font of this component</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="border">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Border of this component</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="layout">
+        <xsd:annotation>
+          <xsd:documentation>Sets the LayoutManager of this component</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagName">
+        <xsd:annotation>
+          <xsd:documentation>Puts this tag into the context under the given nameallowing later calls to org.apache.commons.jelly.tags.swing.ComponentTag.rerun().For example, it makes sense to use ${myTag.rerun()} as a childof an
+          <code>action</code>element.
+          <paramtag>the name to be used</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="ignoreUnknownProperties">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="dialog">
+    <xsd:annotation>
+      <xsd:documentation>Creates a Swing Dialog. A JDialog needs to have it's owner set in the constructor,which is why this class is needed instead of just using a BeanFactory.
+        <authortag>Dave Pekarek Krohn</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="ignoreUnknownProperties">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="focusListener">
+    <xsd:annotation>
+      <xsd:documentation/>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>
+            <paramtag>var</paramtag>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="gained">
+        <xsd:annotation>
+          <xsd:documentation>
+            <paramtag>gained</paramtag>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="lost">
+        <xsd:annotation>
+          <xsd:documentation>
+            <paramtag>lost</paramtag>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="windowListener">
+    <xsd:annotation>
+      <xsd:documentation>Creates a WindowListener which is attached to its parent window control which will invokenamed Jelly scripts as window events are fired, or will invoke its body if there is no scriptspecified for the named event type.
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the variable to use to expose the Event object</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="activated">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Script to be executed when the window is activated.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="closed">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Script to be executed when the window is closed.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="closing">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Script to be executed when the window is closing.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="deactivated">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Script to be executed when the window is deactivated.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="deiconified">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Script to be executed when the window is deiconified.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="iconified">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Script to be executed when the window is iconified.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="opened">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Script to be executed when the window is opened.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="jelly:antlr" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:documentation>
+      <p>A tag library for working with the 
+        <a href="http://www.antlr.org/">Antlr</a>library
+      </p>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="grammar">
+    <xsd:annotation>
+      <xsd:documentation/>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="antlr">
+    <xsd:annotation>
+      <xsd:documentation/>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="outputDir">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

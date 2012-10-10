@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="jelly:xmlunit" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:documentation>
+      <p>Compares two XML documents using
+        <a href="http://xmlunit.sourceforge.net/">XMLUnit</a>
+      </p>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="expected">
+    <xsd:annotation>
+      <xsd:documentation/>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="SAXReader">
+        <xsd:annotation>
+          <xsd:documentation>Sets the SAXReader used for parsing</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="assertDocumentsEqual">
+    <xsd:annotation>
+      <xsd:documentation>Compares two XML documents using XMLUnit (http://xmlunit.sourceforge.net/).If they are different an exception will be thrown.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="actual">
+        <xsd:annotation>
+          <xsd:documentation>Sets the actual XML document which is either a Document, String (of anURI), URI, Reader, or InputStream.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="expected">
+        <xsd:annotation>
+          <xsd:documentation>Sets the expected XML document which is either a Document, String (of anURI), URI, Reader, or InputStream.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="ignoreWhitespace">
+        <xsd:annotation>
+          <xsd:documentation>Controls whether whitespace differences should be interpreted asdifferences or not. The default is
+          <code>false</code>. Note that theuse of the
+          <code>trim</code>attribute is crucial here.
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="SAXReader">
+        <xsd:annotation>
+          <xsd:documentation>Sets the SAXReader used for parsing</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="actual">
+    <xsd:annotation>
+      <xsd:documentation/>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="SAXReader">
+        <xsd:annotation>
+          <xsd:documentation>Sets the SAXReader used for parsing</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

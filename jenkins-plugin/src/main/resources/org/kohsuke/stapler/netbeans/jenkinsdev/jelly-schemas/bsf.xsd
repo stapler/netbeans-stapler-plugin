@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="jelly:bsf" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:documentation>
+      <p>A collection of tag libraries for working with BSF based scripting languages like JavaScript, Jython and PNuts</p>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="script">
+    <xsd:annotation>
+      <xsd:documentation>A tag which evaluates its body using the current scripting language
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480467 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="columnNumber">
+        <xsd:annotation>
+          <xsd:documentation>Sets the columnNumber.
+          <paramtag>columnNumber The columnNumber to set</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="elementName">
+        <xsd:annotation>
+          <xsd:documentation>Sets the elementName.
+          <paramtag>elementName The elementName to set</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="engine">
+        <xsd:annotation>
+          <xsd:documentation>Sets the engine.
+          <paramtag>engine The engine to set</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="fileName">
+        <xsd:annotation>
+          <xsd:documentation>Sets the fileName.
+          <paramtag>fileName The fileName to set</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="lineNumber">
+        <xsd:annotation>
+          <xsd:documentation>Sets the lineNumber.
+          <paramtag>lineNumber The lineNumber to set</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="jelly:html" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:documentation>
+      <p>Tags for parsing HTML so that it can be processed by Jelly using Andy Clark's 
+        <a href="http://www.apache.org/~andyc/neko/doc/index.html">NekoHTML</a>
+      </p>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="parse">
+    <xsd:annotation>
+      <xsd:documentation>A tag which parses some HTML and defines a variable with the parsed Document.The HTML can either be specified as its body or can be passed in via thehtml property which can be a Reader, InputStream, URL or String URI.
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480468 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="html">
+        <xsd:annotation>
+          <xsd:documentation>Sets the source of the HTML which is either a String URI, Reader or InputStream</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="attribute">
+        <xsd:annotation>
+          <xsd:documentation>Sets whether attributes should be converted to a different case.Possible values are "upper", "lower" or "no-change"
+          <paramtag>attribute The processing mode of attributes</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="element">
+        <xsd:annotation>
+          <xsd:documentation>Sets whether elements should be converted to a different casePossible values are "upper", "lower" or "match"
+          <paramtag>element The processing mode of elements</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="text">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="SAXReader">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

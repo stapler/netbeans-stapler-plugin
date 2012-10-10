@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="jelly:jms" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:documentation>
+      <p>A tag library for working with JMS using the 
+        <a href="http://commons.apache.org/sandbox/messenger/">Messenger</a>project
+      </p>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="destination">
+    <xsd:annotation>
+      <xsd:documentation>Creates a Destination object from a String name.
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480470 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="name">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the Destination</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the variable name to use for the Destination</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="connection">
+    <xsd:annotation>
+      <xsd:documentation>Defines a JMS connection for use by other JMS tags.
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480470 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="name">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the Messenger (JMS connection pool) to use</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the variable name to use for the exported Messenger (JMS connection pool)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="send">
+    <xsd:annotation>
+      <xsd:documentation>Sends a JMS message to some destination.
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480470 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="message">
+        <xsd:annotation>
+          <xsd:documentation>Sets the JMS message to be sent</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="connection">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Messenger (the JMS connection pool) that will be used to send the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="destination">
+        <xsd:annotation>
+          <xsd:documentation>Sets the JMS Destination to be used by this tag</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="subject">
+        <xsd:annotation>
+          <xsd:documentation>Sets the subject as a String which is used to create theJMS Destination to be used by this tag</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="stopwatch">
+    <xsd:annotation>
+      <xsd:documentation>This tag can be used to measure the amount of time it takes to process JMS messages.This tag can be wrapped around any custom JMS tag which consumes JMS messages.
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480470 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="groupSize">
+        <xsd:annotation>
+          <xsd:documentation>Sets the number of messages in the group before the performance statistics are logged</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="log">
+        <xsd:annotation>
+          <xsd:documentation>Sets the logger to which statistic messages will be sent</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="messageListener">
+        <xsd:annotation>
+          <xsd:documentation>Sets the JMS messageListener used to consume JMS messages on the given destination</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="connection">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Messenger (the JMS connection pool) that will be used to send the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="destination">
+        <xsd:annotation>
+          <xsd:documentation>Sets the JMS Destination to be used by this tag</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="subject">
+        <xsd:annotation>
+          <xsd:documentation>Sets the subject as a String which is used to create theJMS Destination to be used by this tag</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="onMessage">
+    <xsd:annotation>
+      <xsd:documentation>This tag creates a JMS MessageListener which will invoke thistag's body whenever a JMS Message is received. The JMS Messagewill be available via a variable, which defaults to the 'message'variable name, but can be overloaded by the var attribute.
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480470 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the variable used to make the JMS message available to this tagsbody when a message is received.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="receive">
+    <xsd:annotation>
+      <xsd:documentation>Receives a JMS message.
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480470 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the variable name to create for the received message, which will be null if nomessage could be returned in the given time period.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="timeout">
+        <xsd:annotation>
+          <xsd:documentation>Sets the timeout period in milliseconds to wait for a message. A valueof -1 will wait forever for a message.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="connection">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Messenger (the JMS connection pool) that will be used to send the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="destination">
+        <xsd:annotation>
+          <xsd:documentation>Sets the JMS Destination to be used by this tag</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="subject">
+        <xsd:annotation>
+          <xsd:documentation>Sets the subject as a String which is used to create theJMS Destination to be used by this tag</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="textMessage">
+    <xsd:annotation>
+      <xsd:documentation>Creates a JMS TextMessage
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480470 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="text">
+        <xsd:annotation>
+          <xsd:documentation>Sets the body of the message, a String. If this value is not set orthe value is null then the content of the tag will be used instead.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the variable that the message will be exported to</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="connection">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Messenger (the JMS connection pool) that will be used to send the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="correlationID">
+        <xsd:annotation>
+          <xsd:documentation>Sets the JMS Correlation ID to be used on the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="replyTo">
+        <xsd:annotation>
+          <xsd:documentation>Sets the reply-to destination to add to the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="type">
+        <xsd:annotation>
+          <xsd:documentation>Sets the type name of the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="mapEntry">
+    <xsd:annotation>
+      <xsd:documentation>Adds a map entry to the outer Map Message tag
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480470 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="name">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the entry in the map message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="value">
+        <xsd:annotation>
+          <xsd:documentation>Sets the value of the entry in the map message.If no value is set then the body of the tag is used</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="mapMessage">
+    <xsd:annotation>
+      <xsd:documentation>Creates a JMS MapMessage
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480470 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="map">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Map of entries to be used for this Map Message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the variable that the message will be exported to</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="connection">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Messenger (the JMS connection pool) that will be used to send the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="correlationID">
+        <xsd:annotation>
+          <xsd:documentation>Sets the JMS Correlation ID to be used on the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="replyTo">
+        <xsd:annotation>
+          <xsd:documentation>Sets the reply-to destination to add to the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="type">
+        <xsd:annotation>
+          <xsd:documentation>Sets the type name of the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="objectMessage">
+    <xsd:annotation>
+      <xsd:documentation>Creates a JMS ObjectMessage
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480470 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="object">
+        <xsd:annotation>
+          <xsd:documentation>Sets the body of the message, a serializable java object.If this value is not set or the value is null then the contentof the tag will be used instead.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the variable that the message will be exported to</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="connection">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Messenger (the JMS connection pool) that will be used to send the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="correlationID">
+        <xsd:annotation>
+          <xsd:documentation>Sets the JMS Correlation ID to be used on the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="replyTo">
+        <xsd:annotation>
+          <xsd:documentation>Sets the reply-to destination to add to the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="type">
+        <xsd:annotation>
+          <xsd:documentation>Sets the type name of the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="property">
+    <xsd:annotation>
+      <xsd:documentation>Defines a property on an outer JMS Message tag
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480470 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="name">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the JMS property</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="value">
+        <xsd:annotation>
+          <xsd:documentation>Sets the value of the JMS property.If no value is set then the body of the tag is used</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="subscribe">
+    <xsd:annotation>
+      <xsd:documentation>Performs a subscription to some JMS connection to a destination maybe with a selector.A JMS MessageListener can be specified, or a special child tag can explicitly set it onits parent (so a special tag could construct a MessageListener object and register it with this tag).
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480470 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="selector">
+        <xsd:annotation>
+          <xsd:documentation>Sets the optional JMS Message selector for the subscription</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="messageListener">
+        <xsd:annotation>
+          <xsd:documentation>Sets the JMS messageListener used ot consume JMS messages on the given destination</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="connection">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Messenger (the JMS connection pool) that will be used to send the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="destination">
+        <xsd:annotation>
+          <xsd:documentation>Sets the JMS Destination to be used by this tag</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="subject">
+        <xsd:annotation>
+          <xsd:documentation>Sets the subject as a String which is used to create theJMS Destination to be used by this tag</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="message">
+    <xsd:annotation>
+      <xsd:documentation>A tag which creates a JMS message
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480470 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the variable that the message will be exported to</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="connection">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Messenger (the JMS connection pool) that will be used to send the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="correlationID">
+        <xsd:annotation>
+          <xsd:documentation>Sets the JMS Correlation ID to be used on the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="replyTo">
+        <xsd:annotation>
+          <xsd:documentation>Sets the reply-to destination to add to the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="type">
+        <xsd:annotation>
+          <xsd:documentation>Sets the type name of the message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

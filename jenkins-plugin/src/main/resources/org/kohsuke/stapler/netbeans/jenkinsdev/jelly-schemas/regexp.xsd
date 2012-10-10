@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="jelly:regexp" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:documentation/>
+  </xsd:annotation>
+  <xsd:element name="contains">
+    <xsd:annotation>
+      <xsd:documentation>This tag checks whether a regexp contains a string.
+        <authortag>&lt;a href="mailto:christian@inx-soft.com"&gt;Christian Amor Kvalheim&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480471 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="expr">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="text">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="scope">
+        <xsd:annotation>
+          <xsd:documentation>Sets the variable scope for this variable. For example setting this value to 'parent' willset this value in the parent scope. When Jelly is run from inside a Servlet environmentthen other scopes will be available such as 'request', 'session' or 'application'.Other applications may implement their own custom scopes.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="match">
+    <xsd:annotation>
+      <xsd:documentation>This tag checks whether a regexp matches a string.
+        <authortag>&lt;a href="mailto:christian@inx-soft.com"&gt;Christian Amor Kvalheim&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480471 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="expr">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="text">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="scope">
+        <xsd:annotation>
+          <xsd:documentation>Sets the variable scope for this variable. For example setting this value to 'parent' willset this value in the parent scope. When Jelly is run from inside a Servlet environmentthen other scopes will be available such as 'request', 'session' or 'application'.Other applications may implement their own custom scopes.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

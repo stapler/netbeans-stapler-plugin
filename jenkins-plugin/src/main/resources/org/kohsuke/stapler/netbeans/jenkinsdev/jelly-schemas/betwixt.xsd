@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="jelly:betwixt" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:documentation>
+      <p>A tag library for turning XML into beans or beans into XML using the
+        <a href="http://commons.apache.org/jelly/libs/betwixt/tags.html">Betwixt</a>library
+      </p>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="parse">
+    <xsd:annotation>
+      <xsd:documentation>Parses some XML specified via the given URI (which can be relative or an absolute URL) and outputs theparsed object. Typically this tag is customized by setting the introspector attribute or nesting a childintrospector tag inside it.
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480467 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="introspector">
+        <xsd:annotation>
+          <xsd:documentation>Sets the Betwixt XMLIntrospector instance used to define the metadata for how abean should appear as XML.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="uri">
+        <xsd:annotation>
+          <xsd:documentation>Sets the URI from which XML is parsed. This can be relative to this Jelly script, usean absolute URI or a full URL</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the variable name to output with the result of the XML parse.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="rootClass">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the root class to use for parsing the XML</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="path">
+        <xsd:annotation>
+          <xsd:documentation>Sets the path that the root class should be bound to.This is optional and often unnecessary though can be used to ignore some wrappingelements, such as the &lt;rss&gt;element in the RSS unit test.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="useContextClassLoader">
+        <xsd:annotation>
+          <xsd:documentation>Sets whether or not the current threads's context class loadershould be used to load the bean classes or not.This can be useful if running inside a web application or inside someapplication server.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="classLoader">
+        <xsd:annotation>
+          <xsd:documentation>Sets the ClassLoader to be used to load bean classes from.If this is not specified then either the ClassLoader used to load this tag libraryis used or, if the 'useContextClassLoader' property is true, then thecurrent threads context class loader is used instead.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="introspector">
+    <xsd:annotation>
+      <xsd:documentation>Creates a Betwixt XMLIntrospector instance that can be used by the other Betwixt tags.
+        <authortag>&lt;a href="mailto:jstrachan@apache.org"&gt;James Strachan&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480467 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="attributesForPrimitives">
+        <xsd:annotation>
+          <xsd:documentation>Sets whether attributes or elements should be used for primitive types.The default is false.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="elementNameMapper">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name mapper used for element names.You can also use the Strings 'lowercase', 'uppercase' or 'hyphenated'as aliases to the common name mapping strategies or specify a class name String.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="attributeNameMapper">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name mapper used for attribute names.You can also use the Strings 'lowercase', 'uppercase' or 'hyphenated'as aliases to the common name mapping strategies or specify a class name String.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the variable name to output the new XMLIntrospector to.If this attribute is not specified then this tag must be nestedinside an &lt;parse&gt;or &lt;output&gt;tag</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

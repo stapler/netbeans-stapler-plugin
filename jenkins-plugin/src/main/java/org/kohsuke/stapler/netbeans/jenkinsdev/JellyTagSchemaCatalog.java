@@ -46,6 +46,7 @@ import java.awt.Image;
 import java.beans.PropertyChangeListener;
 import java.util.Collections;
 import java.util.Iterator;
+import org.netbeans.api.annotations.common.StaticResource;
 import org.netbeans.modules.xml.catalog.spi.CatalogDescriptor;
 import org.netbeans.modules.xml.catalog.spi.CatalogListener;
 import org.netbeans.modules.xml.catalog.spi.CatalogReader;
@@ -56,7 +57,6 @@ import org.openide.util.lookup.ServiceProvider;
 
 /**
  * Makes it possible to get completion on Jelly tags.
- * @see <a href="http://wiki.hudson-ci.org/display/HUDSON/Writing+Jelly+views+with+IDE+assistance">wiki</a>
  */
 @MIMEResolver.NamespaceRegistration(
     displayName="",
@@ -69,12 +69,15 @@ import org.openide.util.lookup.ServiceProvider;
 @ServiceProvider(service=CatalogReader.class, path="Plugins/XML/UserCatalogs", supersedes="org.netbeans.modules.hudson.maven.JellyTagSchemaCatalog")
 public class JellyTagSchemaCatalog implements CatalogReader, CatalogDescriptor {
 
+    @StaticResource private static final String TAGLIB_XSD = "org/kohsuke/stapler/netbeans/jenkinsdev/taglib.xsd";
+    @StaticResource private static final String CORE_XSD = "org/kohsuke/stapler/netbeans/jenkinsdev/jelly-schemas/core.xsd";
+
     public String resolveURI(String name) {
         name = name.replaceFirst("\\?.+", ""); // for some reason, get e.g. "jelly:define?fetch=false&&sync=true" here
         if (name.equals("jelly:stapler")) { // NOI18N
-            return "https://stapler.dev.java.net/taglib.xsd"; // NOI18N
+            return JellyTagSchemaCatalog.class.getClassLoader().getResource(TAGLIB_XSD).toString();
         } else if (name.startsWith("jelly:")) { // NOI18N
-            return "jar:https://maven-jellydoc-plugin.dev.java.net/jelly-schemas.zip!/schemas/" + name.substring(6) + ".xsd"; // NOI18N
+            return JellyTagSchemaCatalog.class.getClassLoader().getResource(CORE_XSD).toString().replaceFirst("core(?=[.]xsd$)", name.replaceFirst("^jelly:", ""));
         } else {
             return null;
         }

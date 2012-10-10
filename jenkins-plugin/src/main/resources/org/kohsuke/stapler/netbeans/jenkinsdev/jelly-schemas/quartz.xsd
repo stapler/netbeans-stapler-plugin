@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="jelly:quartz" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:documentation>
+      <p>A tag library for scheduling tasks to be run using the 
+        <a href="http://www.part.net/quartz.html">Quartz</a>library
+      </p>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="job">
+    <xsd:annotation>
+      <xsd:documentation>Defines a schedulable job.
+        <authortag>&lt;a href="mailto:bob@eng.werken.com"&gt;bob mcwhirter&lt;/a&gt;</authortag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="name">
+        <xsd:annotation>
+          <xsd:documentation>Set the name of this job.
+          <paramtag>name The name of this job.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="group">
+        <xsd:annotation>
+          <xsd:documentation>Set the group of this job.
+          <paramtag>group The group of this job.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="cronTrigger">
+    <xsd:annotation>
+      <xsd:documentation>Define a trigger using a cron time spec.
+        <authortag>&lt;a href="mailto:bob@eng.werken.com"&gt;bob mcwhirter&lt;/a&gt;</authortag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="name">
+        <xsd:annotation>
+          <xsd:documentation>Set the name.
+          <paramtag>name.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="group">
+        <xsd:annotation>
+          <xsd:documentation>Set the group
+          <paramtag>group The group</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="spec">
+        <xsd:annotation>
+          <xsd:documentation>Set the cron time spec.
+          <paramtag>spec The cron time spec.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="jobName">
+        <xsd:annotation>
+          <xsd:documentation>Set the job name.
+          <paramtag>jobName The job name.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="jobGroup">
+        <xsd:annotation>
+          <xsd:documentation>Set the job group.
+          <paramtag>jobGroup The job group.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="waitForScheduler">
+    <xsd:annotation>
+      <xsd:documentation>Block and wait for the Quartz scheduler to shutdown.
+        <authortag>&lt;a href="mailto:bob@eng.werken.com"&gt;bob mcwhirter&lt;/a&gt;</authortag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

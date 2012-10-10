@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="jelly:http" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:documentation>
+      <p>A tag library for working with HTTP, performing HTTP GET, POST and other actions</p>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="header">
+    <xsd:annotation>
+      <xsd:documentation>A tag to hold request headers
+        <authortag>dion</authortag>
+        <versiontag>$Id: HeaderTag.java 480468 2006-11-29 08:21:15Z bayard $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="name">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property name.
+          <paramtag>name New value of property name.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="value">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property value.
+          <paramtag>value New value of property value.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="head">
+    <xsd:annotation>
+      <xsd:documentation>A http get tag
+        <authortag>dion</authortag>
+        <versiontag>$Id: HeadTag.java 480468 2006-11-29 08:21:15Z bayard $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property var.
+          <paramtag>var New value of property var.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="path">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property path.
+          <paramtag>path New value of property path.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="uri">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property uri.
+          <paramtag>uri New value of property uri.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="followRedirects">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property followRedirects.
+          <paramtag>followRedirects New value of property followRedirects.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="parameters">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property parameters.
+          <paramtag>parameters New value of property parameters.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="requestHeaders">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property requestHeaders.
+          <paramtag>requestHeaders New value of property requestHeaders.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="session">
+    <xsd:annotation>
+      <xsd:documentation>A http session. This is the container for data shared across requests
+        <authortag>dion</authortag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="httpClient">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property httpClient.
+          <paramtag>httpClient New value of property httpClient.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="proxyHost">
+        <xsd:annotation>
+          <xsd:documentation>Helper method for proxy
+          <code>host</code>property
+          <paramtag>host the {@link #getProxy() proxy's} host property</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="proxyPort">
+        <xsd:annotation>
+          <xsd:documentation>Helper method for proxy
+          <code>port</code>property
+          <paramtag>port the {@link #getProxy() proxy's} port property</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="host">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property host.
+          <paramtag>host New value of property host.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="port">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property port.
+          <paramtag>port New value of property port.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="proxy">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property proxy.
+          <paramtag>proxy New value of property proxy.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="secure">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property secure.
+          <paramtag>secure New value of property secure.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="userAgent">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property userAgent.
+          <paramtag>userAgent New value of property userAgent.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="strictMode">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property strictMode.
+          <paramtag>strictMode New value of property strictMode.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="put">
+    <xsd:annotation>
+      <xsd:documentation>A http put
+        <authortag>dion</authortag>
+        <versiontag>$Id: PutTag.java 480468 2006-11-29 08:21:15Z bayard $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property var.
+          <paramtag>var New value of property var.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="path">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property path.
+          <paramtag>path New value of property path.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="uri">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property uri.
+          <paramtag>uri New value of property uri.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="followRedirects">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property followRedirects.
+          <paramtag>followRedirects New value of property followRedirects.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="parameters">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property parameters.
+          <paramtag>parameters New value of property parameters.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="requestHeaders">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property requestHeaders.
+          <paramtag>requestHeaders New value of property requestHeaders.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="part">
+    <xsd:annotation>
+      <xsd:documentation>A tag to hold a part of a multiPartPost</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="name">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property name.
+          <paramtag>name New value of property name.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="value">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property value.
+          <paramtag>value New value of property value.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="contentType">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property contentType.
+          <paramtag>value New value of contentType.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="parameter">
+    <xsd:annotation>
+      <xsd:documentation>A tag to hold parameters
+        <authortag>dion</authortag>
+        <versiontag>$Id: ParameterTag.java 480468 2006-11-29 08:21:15Z bayard $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="name">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property name.
+          <paramtag>name New value of property name.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="value">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property value.
+          <paramtag>value New value of property value.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="multipartPost">
+    <xsd:annotation>
+      <xsd:documentation>A Multipart MIME message postThis tag should contain one or more &lt;part&gt;tags, tospecify the multiple parts of the messageExample:
+        <pre> &lt;mppost uri="http://localhost?doit"&gt; &lt;part name="user" type="text/plain"&gt;Fred&lt;/part&gt; &lt;part name="data" type="text/plain"&gt;This is the second part of the message&lt;/part&gt; &lt;/mppost&gt;</pre>        <authortag>&lt;a href="mailto:wkeese@yahoo.com"&gt;Bill Keese&lt;/a&gt;</authortag>
+        <sincetag>???</sincetag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property var.
+          <paramtag>var New value of property var.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="path">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property path.
+          <paramtag>path New value of property path.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="uri">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property uri.
+          <paramtag>uri New value of property uri.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="followRedirects">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property followRedirects.
+          <paramtag>followRedirects New value of property followRedirects.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="parameters">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property parameters.
+          <paramtag>parameters New value of property parameters.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="requestHeaders">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property requestHeaders.
+          <paramtag>requestHeaders New value of property requestHeaders.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="delete">
+    <xsd:annotation>
+      <xsd:documentation>A http delete tag
+        <authortag>dion</authortag>
+        <versiontag>$Id: DeleteTag.java 480468 2006-11-29 08:21:15Z bayard $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property var.
+          <paramtag>var New value of property var.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="path">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property path.
+          <paramtag>path New value of property path.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="uri">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property uri.
+          <paramtag>uri New value of property uri.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="followRedirects">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property followRedirects.
+          <paramtag>followRedirects New value of property followRedirects.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="parameters">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property parameters.
+          <paramtag>parameters New value of property parameters.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="requestHeaders">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property requestHeaders.
+          <paramtag>requestHeaders New value of property requestHeaders.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="post">
+    <xsd:annotation>
+      <xsd:documentation>A http post
+        <authortag>dion</authortag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property var.
+          <paramtag>var New value of property var.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="path">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property path.
+          <paramtag>path New value of property path.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="uri">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property uri.
+          <paramtag>uri New value of property uri.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="followRedirects">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property followRedirects.
+          <paramtag>followRedirects New value of property followRedirects.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="parameters">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property parameters.
+          <paramtag>parameters New value of property parameters.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="requestHeaders">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property requestHeaders.
+          <paramtag>requestHeaders New value of property requestHeaders.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="body">
+    <xsd:annotation>
+      <xsd:documentation>A tag to set the body for posts and puts etc
+        <authortag>dion</authortag>
+        <versiontag>$Id: BodyTag.java 480468 2006-11-29 08:21:15Z bayard $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="get">
+    <xsd:annotation>
+      <xsd:documentation>A http get tag
+        <authortag>dion</authortag>
+        <versiontag>$Id: GetTag.java 480468 2006-11-29 08:21:15Z bayard $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property var.
+          <paramtag>var New value of property var.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="path">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property path.
+          <paramtag>path New value of property path.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="uri">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property uri.
+          <paramtag>uri New value of property uri.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="followRedirects">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property followRedirects.
+          <paramtag>followRedirects New value of property followRedirects.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="parameters">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property parameters.
+          <paramtag>parameters New value of property parameters.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="requestHeaders">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property requestHeaders.
+          <paramtag>requestHeaders New value of property requestHeaders.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="options">
+    <xsd:annotation>
+      <xsd:documentation>A http get tag
+        <authortag>dion</authortag>
+        <versiontag>$Id: OptionsTag.java 480468 2006-11-29 08:21:15Z bayard $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property var.
+          <paramtag>var New value of property var.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="path">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property path.
+          <paramtag>path New value of property path.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="uri">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property uri.
+          <paramtag>uri New value of property uri.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="followRedirects">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property followRedirects.
+          <paramtag>followRedirects New value of property followRedirects.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="parameters">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property parameters.
+          <paramtag>parameters New value of property parameters.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="requestHeaders">
+        <xsd:annotation>
+          <xsd:documentation>Setter for property requestHeaders.
+          <paramtag>requestHeaders New value of property requestHeaders.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

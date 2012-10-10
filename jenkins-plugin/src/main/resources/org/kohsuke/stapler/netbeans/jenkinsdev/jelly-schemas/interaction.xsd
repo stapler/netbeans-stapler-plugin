@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="jelly:interaction" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:documentation>
+      <p>A simple interaction tag library so that Jelly scripts can be interactive.</p>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="ask">
+    <xsd:annotation>
+      <xsd:documentation>Jelly Tag that asks the user a question, and puts his answer into a variable,with the attribute "answer". This variable may be reused further as any otherJelly variable.
+        <authortag>&lt;a href="mailto:smor@hasgard.net"&gt;StÃ©phane Mor &lt;/a&gt;</authortag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="question">
+        <xsd:annotation>
+          <xsd:documentation>Sets the question to ask to the user. If a "default" attribute ispresent, it will appear inside [].
+          <paramtag>question The question to ask to the user</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="answer">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the variable that will hold the answer. This defaults to "interact.answer".
+          <paramtag>answer the name of the variable that will hold the answer</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="default">
+        <xsd:annotation>
+          <xsd:documentation>Sets the default answer to the question. If it is present, it will appearinside [].
+          <paramtag>defaultInput the default answer to the question</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="prompt">
+        <xsd:annotation>
+          <xsd:documentation>Sets the prompt that will be displayed before the user's input.
+          <paramtag>prompt the prompt that will be displayed before the user's input.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="completor">
+        <xsd:annotation>
+          <xsd:documentation>Sets the list of predefined commands.
+          <paramtag>list the list of commands used for tab completion.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="useHistoryCompletor">
+        <xsd:annotation>
+          <xsd:documentation>Whether the completion should also happen on previouslyentered lines (default true).
+          <paramtag>should whether it should</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

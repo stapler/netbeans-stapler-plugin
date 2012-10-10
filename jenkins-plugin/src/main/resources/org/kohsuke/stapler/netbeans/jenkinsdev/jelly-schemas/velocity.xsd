@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="jelly:velocity" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:documentation/>
+  </xsd:annotation>
+  <xsd:element name="merge">
+    <xsd:annotation>
+      <xsd:documentation>A tag that uses Velocity to render a specified template with theJellyContext storing the results in either a variable in theJellyContext or in a specified file.
+        <authortag>&lt;a href="mailto:pete-apache-dev@kazmier.com"&gt;Pete Kazmier&lt;/a&gt;</authortag>
+        <versiontag>$Id: MergeTag.java 480466 2006-11-29 08:17:52Z bayard $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the var used to store the results of the merge.
+          <paramtag>var The var to set in the JellyContext with the results of the merge.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="name">
+        <xsd:annotation>
+          <xsd:documentation>Sets the file name for the merged output.
+          <paramtag>name The name of the output file that is used to store the results of the merge.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="basedir">
+        <xsd:annotation>
+          <xsd:documentation>Sets the base directory used for loading of templates by theVelocity file resource loader.
+          <paramtag>basedir The directory where templates can be located by the Velocity file resource loader.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="template">
+        <xsd:annotation>
+          <xsd:documentation>Sets the filename of the template used to merge with theJellyContext.
+          <paramtag>template The filename of the template to be merged.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="readOnly">
+        <xsd:annotation>
+          <xsd:documentation>Sets the read-only flag for this adapter which preventsmodifications in the Velocity context from propogating to theJellyContext.
+          <paramtag>readOnly &lt;tt&gt;true&lt;/tt&gt; prevents modifications from propogating (the default), or &lt;tt&gt;false&lt;/tt&gt; which permits modifications.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="outputEncoding">
+        <xsd:annotation>
+          <xsd:documentation>Sets the output encoding mode which defaults to ISO-8859-1 usedwhen storing the results of a merge in a file.
+          <paramtag>encoding The file encoding to use when writing the output.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="inputEncoding">
+        <xsd:annotation>
+          <xsd:documentation>Sets the input encoding used in the specified template whichdefaults to ISO-8859-1.
+          <paramtag>encoding The encoding used in the template.</paramtag>
+        </xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

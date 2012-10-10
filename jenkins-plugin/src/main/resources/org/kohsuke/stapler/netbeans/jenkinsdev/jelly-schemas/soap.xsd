@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="jelly:soap" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:documentation>
+      <p>Tags for invoking Web Services via
+        <a href="http://xml.apache.org/axis/">Apache Axis</a>
+      </p>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="invoke">
+    <xsd:annotation>
+      <xsd:documentation>Invokes a web service
+        <authortag>&lt;a href="mailto:jim@bnainc.net"&gt;James Birchfield&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="endpoint">
+        <xsd:annotation>
+          <xsd:documentation>Sets the end point to which the invocation will occur</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="namespace">
+        <xsd:annotation>
+          <xsd:documentation>Sets the namespace of the operation</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="method">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="service">
+        <xsd:annotation>
+          <xsd:documentation>Sets the service to be used by this invocation.If none is specified then a default is used.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the variable to output the results of the SOAP call to.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="params">
+        <xsd:annotation>
+          <xsd:documentation>Sets the parameters for this SOAP call. This can be an array or collection ofSOAPBodyElements or types.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="password">
+        <xsd:annotation>
+          <xsd:documentation>Set the password for the SOAP call.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="username">
+        <xsd:annotation>
+          <xsd:documentation>Set the username for the SOAP call.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="invokeRaw">
+    <xsd:annotation>
+      <xsd:documentation>Invokes a web service
+        <authortag>&lt;a href="mailto:jim@bnainc.net"&gt;James Birchfield&lt;/a&gt;</authortag>
+        <versiontag>$Revision: 480474 $</versiontag>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType mixed="true">
+      <xsd:sequence>
+        <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="endpoint">
+        <xsd:annotation>
+          <xsd:documentation>Sets the end point to which the invocation will occur</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="var">
+        <xsd:annotation>
+          <xsd:documentation>Sets the name of the variable to output the results of the SOAP call to.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="soapAction">
+        <xsd:annotation>
+          <xsd:documentation>The SOAPAction HTTP header.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="trim">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="tagLib">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+      <xsd:attribute name="escapeText">
+        <xsd:annotation>
+          <xsd:documentation/>
+        </xsd:annotation>
+      </xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
