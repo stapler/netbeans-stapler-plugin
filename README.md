@@ -1,6 +1,8 @@
 A NetBeans IDE plugin to support the Stapler web framework.
 See [NetBeans plugin for Stapler](https://wiki.jenkins-ci.org/display/JENKINS/NetBeans+plugin+for+Stapler) for background.
 
+[Plugin Portal downloads](http://plugins.netbeans.org/plugin/43938/)
+
 Upcoming in 1.1:
 
 * Taking over Jenkins-dev-specific functionality of current `maven.hudson` module (in IDE distro),
