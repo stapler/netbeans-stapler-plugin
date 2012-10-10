@@ -40,7 +40,7 @@
  * Portions Copyrighted 2009 Sun Microsystems, Inc.
  */
 
-package org.kohsuke.stapler.netbeans.jenkinsdev;
+package org.kohsuke.stapler.netbeans.plugin;
 
 import java.beans.PropertyDescriptor;
 import java.beans.SimpleBeanInfo;

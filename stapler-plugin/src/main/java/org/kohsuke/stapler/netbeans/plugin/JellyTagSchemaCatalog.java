@@ -40,7 +40,7 @@
  * Portions Copyrighted 2009 Sun Microsystems, Inc.
  */
 
-package org.kohsuke.stapler.netbeans.jenkinsdev;
+package org.kohsuke.stapler.netbeans.plugin;
 
 import java.awt.Image;
 import java.beans.PropertyChangeListener;
@@ -69,8 +69,8 @@ import org.openide.util.lookup.ServiceProvider;
 @ServiceProvider(service=CatalogReader.class, path="Plugins/XML/UserCatalogs", supersedes="org.netbeans.modules.hudson.maven.JellyTagSchemaCatalog")
 public class JellyTagSchemaCatalog implements CatalogReader, CatalogDescriptor {
 
-    @StaticResource private static final String TAGLIB_XSD = "org/kohsuke/stapler/netbeans/jenkinsdev/taglib.xsd";
-    @StaticResource private static final String CORE_XSD = "org/kohsuke/stapler/netbeans/jenkinsdev/jelly-schemas/core.xsd";
+    @StaticResource private static final String TAGLIB_XSD = "org/kohsuke/stapler/netbeans/plugin/taglib.xsd";
+    @StaticResource private static final String CORE_XSD = "org/kohsuke/stapler/netbeans/plugin/jelly-schemas/core.xsd";
 
     public String resolveURI(String name) {
         name = name.replaceFirst("\\?.+", ""); // for some reason, get e.g. "jelly:define?fetch=false&&sync=true" here
