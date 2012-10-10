@@ -59,8 +59,9 @@
     </build>
 
     <modules>
+        <module>stapler-plugin</module>
+        <module>jenkins-plugin</module>
         <module>application</module>
-        <module>plugin</module>
     </modules>
 
     <properties>

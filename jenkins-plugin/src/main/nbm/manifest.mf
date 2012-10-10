@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Install: org/kohsuke/stapler/netbeans/jenkinsdev/Installer.class
+OpenIDE-Module-Layer: org/kohsuke/stapler/netbeans/jenkinsdev/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/kohsuke/stapler/netbeans/jenkinsdev/Bundle.properties

@@ -16,7 +16,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <netbeans.run.params.ide/>
-        <netbeans.run.params>${netbeans.run.params.ide}</netbeans.run.params>
+        <netbeans.run.params>${netbeans.run.params.ide} -J-Xmx640m -J-XX:PermSize=32m -J-XX:MaxPermSize=384m -J-Xss2m -J-Xms32m -J-Dnetbeans.full.hack=true</netbeans.run.params>
         <all.clusters>${project.build.directory}/${brandingToken}</all.clusters>
     </properties>
 
@@ -56,6 +56,11 @@
             <artifactId>plugin</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>jenkinsdev</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -63,9 +68,6 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>nbm-maven-plugin</artifactId>
-                <configuration>
-                    <additionalArguments>-J-Xmx640m -J-XX:PermSize=32m -J-XX:MaxPermSize=384m -J-Xss2m -J-Xms32m -J-Dnetbeans.full.hack=true</additionalArguments>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
