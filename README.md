@@ -27,3 +27,4 @@ To do:
 * Java hint about `VirtualChannel.call` and `VirtualChannel.callAsync` (also `FilePath.act`)
   on anonymous inner classes or classes otherwise lacking `serialVersionUID`
   (cf. [JENKINS-14667](issues.jenkins-ci.org/browse/JENKINS-14667))
+* #219789 follow-up: when Jenkins plugin signed, verified, and on PP, add hint to IDE to find it for hpi packaging
