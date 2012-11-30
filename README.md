@@ -3,7 +3,7 @@ See [NetBeans plugin for Stapler](https://wiki.jenkins-ci.org/display/JENKINS/Ne
 
 [Plugin Portal downloads](http://plugins.netbeans.org/plugin/43938/)
 
-Upcoming in 1.2:
+Implemented in 1.2:
 
 * Taking over Jenkins-dev-specific functionality of current `maven.hudson` module (in IDE distro),
   in a separate plugin (see [NB #219789](https://netbeans.org/bugzilla/show_bug.cgi?id=219789) for patch):
