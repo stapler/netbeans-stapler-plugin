@@ -10,7 +10,7 @@
     <packaging>nbm</packaging>
     <name>Jenkins Plugin Support</name>
     <description>Support for developing Hudson/Jenkins plugins.</description>
-    <url>https://wiki.jenkins-ci.org/display/JENKINS/NetBeans+plugin+for+Stapler</url>
+    <url>https://github.com/stapler/netbeans-stapler-plugin</url>
     <licenses>
         <license>
             <name>NetBeans CDDL/GPL</name>

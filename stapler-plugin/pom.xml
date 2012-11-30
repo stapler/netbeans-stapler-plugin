@@ -11,7 +11,7 @@
 
     <name>Stapler Support</name>
     <description>Support for Stapler, used mainly by Hudson/Jenkins. Currently includes a hint to refactor hardcoded strings to Messages.</description>
-    <url>https://wiki.jenkins-ci.org/display/JENKINS/NetBeans+plugin+for+Stapler</url>
+    <url>https://github.com/stapler/netbeans-stapler-plugin</url>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
