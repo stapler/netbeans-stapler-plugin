@@ -3,15 +3,21 @@ See [NetBeans plugin for Stapler](https://wiki.jenkins-ci.org/display/JENKINS/Ne
 
 [Plugin Portal downloads](http://plugins.netbeans.org/plugin/43938/)
 
-Upcoming in 1.1:
+Upcoming in 1.2:
 
 * Taking over Jenkins-dev-specific functionality of current `maven.hudson` module (in IDE distro),
   in a separate plugin (see [NB #219789](https://netbeans.org/bugzilla/show_bug.cgi?id=219789) for patch):
     * default actions, icon for `hpi` packaging
     * `text/x-jelly+xml` MIME registration and Jelly/Stapler schema validation support
     * show `localhost:8080` when running Jenkins
+* Signing NBMs.
 
-Features in 1.0:
+Implemented in 1.1:
+
+* Packaging improvements.
+* NullPointerException fix.
+
+Implemented in 1.0:
 
 * replace hardcoded string (`"including " + variable + " elements"`) with `Messages.properties`;
   see [Internationalization](https://wiki.jenkins-ci.org/display/JENKINS/Internationalization)
