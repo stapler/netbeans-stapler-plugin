@@ -7,6 +7,7 @@ Upcoming in 1.3:
 
 * navigate between types and their Jelly view folders (creating view folder as needed)
 * New File template for Jelly scripts
+* prominent Jenkins plugin archetype
 
 Implemented in 1.2:
 
@@ -33,7 +34,6 @@ To do:
 * find usages, find subtypes, etc. inside and between Jelly pages
 * rename refactoring to rename view folders
 * support `jenkins-module` packaging
-* prominent Jenkins plugin archetype
 * Java hint about `VirtualChannel.call` and `VirtualChannel.callAsync` (also `FilePath.act`)
   on anonymous inner classes or classes otherwise lacking `serialVersionUID`
   (cf. [JENKINS-14667](issues.jenkins-ci.org/browse/JENKINS-14667))

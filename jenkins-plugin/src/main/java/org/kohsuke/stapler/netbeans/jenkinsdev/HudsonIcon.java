@@ -48,6 +48,7 @@ import org.openide.util.ImageUtilities;
 public class HudsonIcon implements SpecialIcon {
 
     @Override public Icon getIcon() {
+        // XXX switch to jenkins.png according to groupId
         return ImageUtilities.loadImageIcon("org/netbeans/modules/hudson/ui/resources/instance.png", true);
     }
 
