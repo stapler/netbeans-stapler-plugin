@@ -3,6 +3,11 @@ See [NetBeans plugin for Stapler](https://wiki.jenkins-ci.org/display/JENKINS/Ne
 
 [Plugin Portal downloads](http://plugins.netbeans.org/plugin/43938/)
 
+Upcoming in 1.3:
+
+* navigate between types and their Jelly view folders (creating view folder as needed)
+* New File template for Jelly scripts
+
 Implemented in 1.2:
 
 * Taking over Jenkins-dev-specific functionality of current `maven.hudson` module (in IDE distro),
@@ -25,7 +30,6 @@ Implemented in 1.0:
 To do:
 
 * extend Output Window hyperlink to work from `exec:exec` on Winstone, `hudson-dev:run`, etc.
-* navigate between types and their Jelly view folders (creating view folder as needed)
 * find usages, find subtypes, etc. inside and between Jelly pages
 * rename refactoring to rename view folders
 * support `jenkins-module` packaging

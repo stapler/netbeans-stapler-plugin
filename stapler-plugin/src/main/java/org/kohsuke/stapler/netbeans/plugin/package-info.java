@@ -22,7 +22,12 @@
  * THE SOFTWARE.
  */
 
-@Messages("OpenIDE-Module-Display-Category=Editing")
+@Messages({
+    "OpenIDE-Module-Display-Category=Editing",
+    "desc_sample_jelly=Jelly Script"
+})
+@TemplateRegistration(folder="XML", position=2012, content="sample.jelly", scriptEngine="freemarker", displayName="#desc_sample_jelly", description="sample-jelly.html")
 package org.kohsuke.stapler.netbeans.plugin;
 
+import org.netbeans.api.templates.TemplateRegistration;
 import org.openide.util.NbBundle.Messages;

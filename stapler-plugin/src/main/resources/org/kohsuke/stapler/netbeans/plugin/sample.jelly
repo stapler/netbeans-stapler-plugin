@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<#assign licenseFirst = "<!--">
+<#assign licensePrefix = "">
+<#assign licenseLast = "-->">
+<#include "../Licenses/license-${project.license}.txt">
+
+<?jelly escape-by-default='true'?>
+<!-- TODO add taglibs such as: xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" -->
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:i="jelly:fmt">
+    <!-- TODO -->
+</j:jelly>
