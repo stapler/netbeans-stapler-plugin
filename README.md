@@ -30,6 +30,7 @@ Implemented in 1.0:
 
 To do:
 
+* Stapler view navigation should walk up the inheritance hierarchy if necessary
 * extend Output Window hyperlink to work from `exec:exec` on Winstone, `hudson-dev:run`, etc.
 * find usages, find subtypes, etc. inside and between Jelly pages
 * rename refactoring to rename view folders
