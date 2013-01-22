@@ -31,13 +31,14 @@ Implemented in 1.0:
 To do:
 
 * Stapler view navigation should walk up the inheritance hierarchy if necessary
+* Stapler view creation should assume src/main/resources if there are multiple resource folders available
 * extend Output Window hyperlink to work from `exec:exec` on Winstone, `hudson-dev:run`, etc.
 * find usages, find subtypes, etc. inside and between Jelly pages
 * rename refactoring to rename view folders
 * support `jenkins-module` packaging
 * Java hint about `VirtualChannel.call` and `VirtualChannel.callAsync` (also `FilePath.act`)
   on anonymous inner classes or classes otherwise lacking `serialVersionUID`
-  (cf. [JENKINS-14667](issues.jenkins-ci.org/browse/JENKINS-14667))
+  (cf. [JENKINS-14667](https://issues.jenkins-ci.org/browse/JENKINS-14667) and [b807845](https://github.com/jenkinsci/jenkins/commit/b807845b9b03bbe02babcf03fa7e6dbd80b41fcf))
 
 Also see:
 
