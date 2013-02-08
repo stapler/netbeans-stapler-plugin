@@ -39,6 +39,8 @@ To do:
 * Java hint about `VirtualChannel.call` and `VirtualChannel.callAsync` (also `FilePath.act`)
   on anonymous inner classes or classes otherwise lacking `serialVersionUID`
   (cf. [JENKINS-14667](https://issues.jenkins-ci.org/browse/JENKINS-14667) and [b807845](https://github.com/jenkinsci/jenkins/commit/b807845b9b03bbe02babcf03fa7e6dbd80b41fcf))
+* Code completion or similar for Groovy views
+* Offer something like [jelly2groovy](https://github.com/slide/jelly2groovy) as a context menu action on Jelly views
 
 Also see:
 
