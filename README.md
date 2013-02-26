@@ -3,7 +3,7 @@ See [NetBeans plugin for Stapler](https://wiki.jenkins-ci.org/display/JENKINS/Ne
 
 [Plugin Portal downloads](http://plugins.netbeans.org/plugin/43938/)
 
-Upcoming in 1.3:
+Implemented in 1.3:
 
 * navigate between types and their Jelly view folders (creating view folder as needed)
 * New File template for Jelly scripts
@@ -39,6 +39,7 @@ To do:
 * Java hint about `VirtualChannel.call` and `VirtualChannel.callAsync` (also `FilePath.act`)
   on anonymous inner classes or classes otherwise lacking `serialVersionUID`
   (cf. [JENKINS-14667](https://issues.jenkins-ci.org/browse/JENKINS-14667) and [b807845](https://github.com/jenkinsci/jenkins/commit/b807845b9b03bbe02babcf03fa7e6dbd80b41fcf))
+* Java hint to replace `SecurityContextHolder.getContext().setAuthentication` with `ACL.impersonate` in 1.462+
 * Code completion or similar for Groovy views
 * Offer something like [jelly2groovy](https://github.com/slide/jelly2groovy) as a context menu action on Jelly views
 
