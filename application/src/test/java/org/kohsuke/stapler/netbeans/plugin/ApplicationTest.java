@@ -8,11 +8,14 @@ import org.netbeans.junit.NbTestCase;
 public class ApplicationTest extends NbTestCase {
 
     public static Test suite() {
+        return new ApplicationTest("testApplication"); // XXX disable pending http://netbeans.org/bugzilla/show_bug.cgi?id=225522
+        /*
         return NbModuleSuite.createConfiguration(ApplicationTest.class).
                 gui(false).
                 failOnMessage(Level.WARNING). // works at least in RELEASE71
                 failOnException(Level.INFO).
                 suite(); // RELEASE71+, else use NbModuleSuite.create(NbModuleSuite.createConfiguration(...))
+        */
     }
 
     public ApplicationTest(String n) {
