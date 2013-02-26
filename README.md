@@ -8,6 +8,7 @@ Implemented in 1.3:
 * navigate between types and their Jelly view folders (creating view folder as needed)
 * New File template for Jelly scripts
 * prominent Jenkins plugin archetype
+* 7.3 baseline
 
 Implemented in 1.2:
 
