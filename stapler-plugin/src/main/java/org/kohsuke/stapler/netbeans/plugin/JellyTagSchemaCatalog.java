@@ -61,7 +61,7 @@ import org.openide.util.lookup.ServiceProvider;
 @MIMEResolver.NamespaceRegistration(
     displayName="",
     position=454,
-    mimeType="text/x-jelly+xml",
+    mimeType=JellyTagSchemaCatalog.MIME_TYPE,
     acceptedExtension="jelly",
     elementName="jelly",
     elementNS="jelly:core"
@@ -69,6 +69,7 @@ import org.openide.util.lookup.ServiceProvider;
 @ServiceProvider(service=CatalogReader.class, path="Plugins/XML/UserCatalogs", supersedes="org.netbeans.modules.hudson.maven.JellyTagSchemaCatalog")
 public class JellyTagSchemaCatalog implements CatalogReader, CatalogDescriptor {
 
+    public static final String MIME_TYPE = "text/x-jelly+xml";
     @StaticResource private static final String TAGLIB_XSD = "org/kohsuke/stapler/netbeans/plugin/taglib.xsd";
     @StaticResource private static final String CORE_XSD = "org/kohsuke/stapler/netbeans/plugin/jelly-schemas/core.xsd";
 

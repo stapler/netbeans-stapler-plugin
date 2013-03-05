@@ -3,6 +3,9 @@ See [NetBeans plugin for Stapler](https://wiki.jenkins-ci.org/display/JENKINS/Ne
 
 [Plugin Portal downloads](http://plugins.netbeans.org/plugin/43938/)
 
+Upcoming in 1.4:
+* hyperlinking custom Jelly tags (e.g. `<f:textbox/>`) to their taglib definitions (`textbox.jelly`)
+
 Implemented in 1.3:
 
 * navigate between types and their Jelly view folders (creating view folder as needed)
