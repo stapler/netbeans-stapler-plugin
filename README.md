@@ -1,4 +1,4 @@
-A NetBeans IDE plugin to support the Stapler web framework.
+A NetBeans IDE plugin suite to support Jenkins plugin development and the Stapler web framework.
 See [NetBeans plugin for Stapler](https://wiki.jenkins-ci.org/display/JENKINS/NetBeans+plugin+for+Stapler) for background.
 
 [Plugin Portal downloads](http://plugins.netbeans.org/plugin/43938/)
@@ -34,6 +34,7 @@ Implemented in 1.0:
 
 To do:
 
+* new versions of `hpi:run` should now open `http://localhost:8080/jenkins/` rather than `http://localhost:8080/`
 * Stapler view navigation should walk up the inheritance hierarchy if necessary
 * Stapler view creation should assume src/main/resources if there are multiple resource folders available
 * extend Output Window hyperlink to work from `exec:exec` on Winstone, `hudson-dev:run`, etc.
@@ -46,6 +47,11 @@ To do:
 * Java hint to replace `SecurityContextHolder.getContext().setAuthentication` with `ACL.impersonate` in 1.462+
 * Code completion or similar for Groovy views
 * Offer something like [jelly2groovy](https://github.com/slide/jelly2groovy) as a context menu action on Jelly views
+* ignore `work` directory of a plugin (according to `SharabilityQuery`)
+* hyperlink methods in `Messages` to their `Messages.properties` definitions
+* _Go to Stapler View/Model_ should prefer `*.jelly` to `*.properties`
+* `*.jelly` do not seem to show _History_ tab.
+* `textbox.jelly` cannot be validated: tried to load nonexistent `hudson.util.jelly.MorphTagLibrary.xsd`
 
 Also see:
 
