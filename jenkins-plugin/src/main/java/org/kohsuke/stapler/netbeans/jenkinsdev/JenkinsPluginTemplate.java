@@ -52,7 +52,7 @@ public class JenkinsPluginTemplate {
     @Messages("archetype=Jenkins Plugin")
     @TemplateRegistration(folder=ArchetypeWizards.TEMPLATE_FOLDER, position=2012, iconBase="org/kohsuke/stapler/netbeans/jenkinsdev/jenkins.png", displayName="#archetype", description="archetype.html")
     public static WizardDescriptor.InstantiatingIterator<?> archetype() {
-        return ArchetypeWizards.definedArchetype("org.jenkins-ci.tools", "maven-hpi-plugin", "1.94", "http://repo.jenkins-ci.org/public/", Bundle.archetype());
+        return ArchetypeWizards.definedArchetype("org.jenkins-ci.tools", "maven-hpi-plugin", "1.95", "http://repo.jenkins-ci.org/public/", Bundle.archetype());
     }
 
     private JenkinsPluginTemplate() {}
