@@ -26,6 +26,7 @@ package org.kohsuke.stapler.netbeans.plugin;
 
 import com.sun.source.tree.BinaryTree;
 import com.sun.source.tree.ClassTree;
+import com.sun.source.tree.CompilationUnitTree;
 import com.sun.source.tree.ExpressionTree;
 import com.sun.source.tree.LiteralTree;
 import org.netbeans.api.java.source.CompilationInfo;
@@ -50,9 +51,11 @@ import java.util.Locale;
 import org.netbeans.api.annotations.common.NonNull;
 import org.netbeans.api.java.source.ClasspathInfo;
 import org.netbeans.api.java.source.TreeMaker;
+import org.netbeans.api.java.source.WorkingCopy;
 import org.openide.awt.StatusDisplayer;
 import org.openide.filesystems.FileObject;
 import org.openide.util.EditableProperties;
+import org.openide.util.Parameters;
 
 @Hint(displayName = "#DN_MessagesHint", description = "#DESC_MessagesHint", category = "general", severity=Severity.HINT)
 @Messages({
@@ -93,8 +96,25 @@ public class MessagesHint {
 
         @Messages({"# {0} - resource path", "MessagesHint.create_resource=You need to create a resource {0} to use this hint."})
         @Override protected void performRewrite(TransformationContext ctx) throws Exception {
-            String resource = ctx.getWorkingCopy().getCompilationUnit().getPackageName().toString().replace('.', '/') + "/Messages.properties";
-            FileObject messagesProperties = ctx.getWorkingCopy().getClasspathInfo().getClassPath(ClasspathInfo.PathKind.SOURCE).findResource(resource);
+            Parameters.notNull("ctx", ctx);
+            WorkingCopy wc = ctx.getWorkingCopy();
+            if (wc == null) {
+                throw new IllegalStateException();
+            }
+            CompilationUnitTree cu = wc.getCompilationUnit();
+            if (cu == null) {
+                throw new IllegalStateException();
+            }
+            ExpressionTree packageName = cu.getPackageName();
+            if (packageName == null) {
+                throw new IllegalStateException();
+            }
+            String packageNameS = packageName.toString();
+            if (packageNameS == null) {
+                throw new IllegalStateException();
+            }
+            String resource = packageNameS.replace('.', '/') + "/Messages.properties";
+            FileObject messagesProperties = wc.getClasspathInfo().getClassPath(ClasspathInfo.PathKind.SOURCE).findResource(resource);
             if (messagesProperties == null) {
                 StatusDisplayer.getDefault().setStatusText(Bundle.MessagesHint_create_resource(resource));
                 return;
@@ -107,7 +127,7 @@ public class MessagesHint {
                 is.close();
             }
             Text text = textOf((ExpressionTree) ctx.getPath().getLeaf(), true, 0);
-            String cname = ((ClassTree) ctx.getWorkingCopy().getCompilationUnit().getTypeDecls().get(0)).getSimpleName().toString();
+            String cname = ((ClassTree) cu.getTypeDecls().get(0)).getSimpleName().toString();
             String key = cname + '.' + text.key();
             String id = toJavaIdentifier(key);
             ep.put(key, text.messageFormat);
@@ -117,8 +137,8 @@ public class MessagesHint {
             } finally {
                 os.close();
             }
-            TreeMaker make = ctx.getWorkingCopy().getTreeMaker();
-            ctx.getWorkingCopy().rewrite(ctx.getPath().getLeaf(), make.MethodInvocation(Collections.<ExpressionTree>emptyList(), make.MemberSelect(make.Identifier("Messages"), id), text.params));
+            TreeMaker make = wc.getTreeMaker();
+            wc.rewrite(ctx.getPath().getLeaf(), make.MethodInvocation(Collections.<ExpressionTree>emptyList(), make.MemberSelect(make.Identifier("Messages"), id), text.params));
         }
 
     }
