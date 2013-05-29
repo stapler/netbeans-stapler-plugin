@@ -13,6 +13,10 @@
     <url>https://github.com/stapler/netbeans-stapler-plugin</url>
     <licenses>
         <license>
+            <name>MIT</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+        <license>
             <name>NetBeans CDDL/GPL</name>
             <url>http://www.netbeans.org/cddl-gplv2.html</url>
         </license>
