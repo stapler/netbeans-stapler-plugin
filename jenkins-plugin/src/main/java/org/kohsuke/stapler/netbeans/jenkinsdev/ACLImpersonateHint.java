@@ -22,9 +22,7 @@
  * THE SOFTWARE.
  */
 
-// XXX really belongs in jenkinsdev but due to https://netbeans.org/bugzilla/show_bug.cgi?id=230478 cannot be tested from there
-
-package org.kohsuke.stapler.netbeans.plugin;
+package org.kohsuke.stapler.netbeans.jenkinsdev;
 
 import org.netbeans.spi.editor.hints.ErrorDescription;
 import org.netbeans.spi.editor.hints.Severity;

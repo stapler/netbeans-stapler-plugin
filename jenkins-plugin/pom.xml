@@ -23,6 +23,7 @@
     </licenses>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
     </properties>
     <build>
         <plugins>
@@ -39,6 +40,63 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                     <useDefaultManifestFile>true</useDefaultManifestFile>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <id>endorsed</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <outputDirectory>${endorsed.dir}</outputDirectory>
+                    <silent>true</silent>
+                    <artifactItems>
+                        <artifactItem>
+                            <groupId>org.netbeans.api</groupId>
+                            <artifactId>org-netbeans-libs-javacapi</artifactId>
+                            <version>${netbeans.version}</version>
+                        </artifactItem>
+                        <artifactItem>
+                            <groupId>org.netbeans.external</groupId>
+                            <artifactId>nb-javac-api</artifactId>
+                            <version>${netbeans.version}</version>
+                        </artifactItem>
+                        <artifactItem>
+                            <groupId>org.netbeans.modules</groupId>
+                            <artifactId>org-netbeans-libs-javacimpl</artifactId>
+                            <version>${netbeans.version}</version>
+                        </artifactItem>
+                        <artifactItem>
+                            <groupId>org.netbeans.external</groupId>
+                            <artifactId>nb-javac-impl</artifactId>
+                            <version>${netbeans.version}</version>
+                        </artifactItem>
+                    </artifactItems>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArguments>
+                        <endorseddirs>${endorsed.dir}</endorseddirs>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.13</version>
+                <configuration>
+                    <argLine>-Djava.endorsed.dirs=${endorsed.dir}</argLine>
                 </configuration>
             </plugin>
         </plugins>
@@ -93,6 +151,44 @@
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-openide-modules</artifactId>
             <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-netbeans-libs-javacapi</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-netbeans-modules-java-source</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-netbeans-spi-java-hints</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-netbeans-spi-editor-hints</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-netbeans-modules-java-hints-test</artifactId>
+            <version>${netbeans.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.modules</groupId>
+            <artifactId>org-netbeans-lib-nbjavac</artifactId>
+            <version>${netbeans.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.main</groupId>
+            <artifactId>jenkins-core</artifactId>
+            <version>1.466.2</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

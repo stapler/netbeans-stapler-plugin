@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package org.kohsuke.stapler.netbeans.plugin;
+package org.kohsuke.stapler.netbeans.jenkinsdev;
 
 import hudson.security.ACL;
 import java.net.URL;
