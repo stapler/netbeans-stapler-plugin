@@ -21,9 +21,9 @@
 
     <repositories>
         <repository>
-            <id>netbeans</id>
+            <id>netbeans-snapshot</id> <!-- XXX -->
             <name>NetBeans</name>
-            <url>http://bits.netbeans.org/nexus/content/groups/netbeans/</url>
+            <url>http://bits.netbeans.org/nexus/content/repositories/snapshots/</url>
         </repository>
         <repository>
             <id>repo.jenkins-ci.org</id>
@@ -91,7 +91,7 @@
     </modules>
 
     <properties>
-        <netbeans.version>RELEASE73</netbeans.version>
+        <netbeans.version>dev-SNAPSHOT</netbeans.version> <!-- XXX -->
         <brandingToken>nb</brandingToken>
     </properties>
 </project>
