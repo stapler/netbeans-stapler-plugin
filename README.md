@@ -7,6 +7,7 @@ Upcoming in 1.4:
 * plugin template based on 1.509.3
 * hyperlinking custom Jelly tags (e.g. `<f:textbox/>`) to their taglib definitions (`textbox.jelly`)
 * editor hint for cases where `ACL.impersonate` is needed
+* asks the project’s SCM to ignore the `work` directory of a plugin
 
 Implemented in 1.3:
 
@@ -36,7 +37,7 @@ Implemented in 1.0:
 
 To do:
 
-* new versions of `hpi:run` should now open `http://localhost:8080/jenkins/` rather than `http://localhost:8080/`
+* new versions of `hpi:run` should now open `http://localhost:8080/jenkins/` rather than `http://localhost:8080/` (ideally try to read `<contextPath>`/`${hpi.prefix}`)
 * Stapler view navigation should walk up the inheritance hierarchy if necessary
 * Stapler view creation should assume src/main/resources if there are multiple resource folders available
 * extend Output Window hyperlink to work from `exec:exec` on Winstone, `hudson-dev:run`, etc.
@@ -48,11 +49,11 @@ To do:
   (cf. [JENKINS-14667](https://issues.jenkins-ci.org/browse/JENKINS-14667) and [b807845](https://github.com/jenkinsci/jenkins/commit/b807845b9b03bbe02babcf03fa7e6dbd80b41fcf))
 * Code completion or similar for Groovy views
 * Offer something like [jelly2groovy](https://github.com/slide/jelly2groovy) as a context menu action on Jelly views
-* ignore `work` directory of a plugin (according to `SharabilityQuery`)
 * hyperlink methods in `Messages` to their `Messages.properties` definitions
 * _Go to Stapler View/Model_ should prefer `*.jelly` to `*.properties`
 * `*.jelly` do not seem to show _History_ tab.
 * `textbox.jelly` cannot be validated: tried to load nonexistent `hudson.util.jelly.MorphTagLibrary.xsd`
+* should prompt user for `Messages` key (if it can be detected that the hint is running interactively)
 
 Also see:
 
