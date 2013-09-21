@@ -4,6 +4,7 @@ See [NetBeans plugin for Stapler](https://wiki.jenkins-ci.org/display/JENKINS/Ne
 [Plugin Portal downloads](http://plugins.netbeans.org/plugin/43938/)
 
 Upcoming in 1.4:
+* plugin template based on 1.509.3
 * hyperlinking custom Jelly tags (e.g. `<f:textbox/>`) to their taglib definitions (`textbox.jelly`)
 * editor hint for cases where `ACL.impersonate` is needed
 
