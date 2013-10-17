@@ -46,7 +46,6 @@ public class PluginSharabilityQueryMerger implements LookupMerger<SharabilityQue
                 // Will clash with any future LookupMerger<SharabilityQueryImplementation2> applied to projectType="org-netbeans-modules-maven", alas.
                 Project project = FileOwnerQuery.getOwner(uri);
                 if (project != null && (uri.equals(project.getProjectDirectory().toURI().resolve("work")) || uri.equals(project.getProjectDirectory().toURI().resolve("work/")))) {
-                    System.err.println("TODO NOT_SHARABLE: " + uri);
                     return SharabilityQuery.Sharability.NOT_SHARABLE;
                 }
                 for (SharabilityQueryImplementation2 impl : lookup.lookupAll(SharabilityQueryImplementation2.class)) {
