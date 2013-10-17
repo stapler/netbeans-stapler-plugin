@@ -4,7 +4,7 @@
 
     <groupId>org.kohsuke.stapler.netbeans</groupId>
     <artifactId>parent</artifactId>
-    <version>1.4</version>
+    <version>1.4.99</version>
     <packaging>pom</packaging>
 
     <name>Stapler/NetBeans</name>
