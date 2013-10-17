@@ -8,7 +8,7 @@ import org.netbeans.junit.NbTestCase;
 public class ApplicationTest extends NbTestCase {
 
     public static Test suite() {
-        return new ApplicationTest("testApplication"); // XXX disable pending http://netbeans.org/bugzilla/show_bug.cgi?id=225522
+        return new ApplicationTest("testApplication"); // TODO disable pending http://netbeans.org/bugzilla/show_bug.cgi?id=225522
         /*
         return NbModuleSuite.createConfiguration(ApplicationTest.class).
                 gui(false).

@@ -80,6 +80,6 @@ public class JellyHyperlinkProviderTest {
         assertEquals(null, JellyHyperlinkProvider.correspondingJellyResource(doc, offsetOf("j:if")));
     }
 
-    // XXX test for taglib locating in performClickAction
+    // TODO test for taglib locating in performClickAction
     
 }

@@ -72,7 +72,7 @@ public final class StaplerViewAction implements ActionListener {
             if (file.hasExt("java")) { // file is the model
                 String name = sources.getResourceName(file);
                 assert name != null : file + " not really in " + sources;
-                String vname = name.replaceFirst("[.]java$", ""); // XXX if a nested class is selected, use that instead
+                String vname = name.replaceFirst("[.]java$", ""); // TODO if a nested class is selected, use that instead
                 FileObject viewF = sources.findResource(vname);
                 if (viewF == null) { // no view yet
                     Project p = FileOwnerQuery.getOwner(file);
@@ -125,7 +125,7 @@ public final class StaplerViewAction implements ActionListener {
                     StatusDisplayer.getDefault().setStatusText("No model found matching " + name.replace('/', '.'));
                     return;
                 }
-                NbDocument.openDocument(DataObject.find(model), /* XXX nicer to jump to actual type */0, Line.ShowOpenType.OPEN, Line.ShowVisibilityType.FOCUS);
+                NbDocument.openDocument(DataObject.find(model), /* TODO nicer to jump to actual type */0, Line.ShowOpenType.OPEN, Line.ShowVisibilityType.FOCUS);
             }
         } catch (DataObjectNotFoundException x) {
             assert false : x;
@@ -134,7 +134,7 @@ public final class StaplerViewAction implements ActionListener {
 
     private void instantiate(FileObject viewF) {
         TemplateWizard wiz = new TemplateWizard();
-        wiz.setTargetName("config"); // XXX this does not work, why?
+        wiz.setTargetName("config"); // TODO this does not work, why?
         try {
             FileObject template = FileUtil.getConfigFile("Templates/XML/sample.jelly");
             assert template != null;

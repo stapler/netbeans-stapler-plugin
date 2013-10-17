@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-// XXX really belongs in jenkinsdev but due to https://netbeans.org/bugzilla/show_bug.cgi?id=230478 cannot be tested from there
+// TODO really belongs in jenkinsdev but due to https://netbeans.org/bugzilla/show_bug.cgi?id=230478 cannot be tested from there
 
 package org.kohsuke.stapler.netbeans.plugin;
 
@@ -37,7 +37,7 @@ import org.openide.util.NbBundle.Messages;
 /**
  * @see <a href="cf. https://github.com/h3xstream/find-sec-bugs/issues/8">FindBugs Sec issue</a>
  */
-@Hint(displayName="#DN_ACLImpersonateHint", description="#DESC_ACLImpersonateHint", category="general", severity=Severity.WARNING, suppressWarnings=/* XXX FindBugs key when available */"ACL.impersonate")
+@Hint(displayName="#DN_ACLImpersonateHint", description="#DESC_ACLImpersonateHint", category="general", severity=Severity.WARNING, suppressWarnings=/* TODO FindBugs key when available */"ACL.impersonate")
 @Messages({
     "DN_ACLImpersonateHint=Unsafe ACEGI Security idiom",
     "DESC_ACLImpersonateHint=Temporarily replacing the Authentication in the current SecurityContext is unsafe, because this context may be shared by multiple threads in the same HTTP session. Instead, temporarily switch to a different context, as with ACL.impersonate."
@@ -48,7 +48,7 @@ public class ACLImpersonateHint {
     @Messages("ERR_ACLImpersonateHint=Use ACL.impersonate rather than setting authentication on the current security context")
     public static ErrorDescription hardcodedString(HintContext ctx) {
         return ErrorDescriptionFactory.forName(ctx, ctx.getPath(), Bundle.ERR_ACLImpersonateHint());
-        // XXX offer a fix (switch to ACL.impersonate) if ctx.getInfo().getClasspathInfo().getClassPath(ClasspathInfo.PathKind.COMPILE).findResource("hudson/security/ACL.class") != null and 1.462+
+        // TODO offer a fix (switch to ACL.impersonate) if ctx.getInfo().getClasspathInfo().getClassPath(ClasspathInfo.PathKind.COMPILE).findResource("hudson/security/ACL.class") != null and 1.462+
     }
 
     private ACLImpersonateHint() {}

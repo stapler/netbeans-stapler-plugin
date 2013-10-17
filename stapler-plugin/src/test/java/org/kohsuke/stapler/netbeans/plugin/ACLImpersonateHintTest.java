@@ -53,7 +53,7 @@ public class ACLImpersonateHintTest {
                 + "    }\n"
                 + "}\n")
                 .run(ACLImpersonateHint.class)
-                // XXX ideally would show just one warning for the whole idiom, but need to show it also on unclosed switches e.g. at start of new thread
+                // TODO ideally would show just one warning for the whole idiom, but need to show it also on unclosed switches e.g. at start of new thread
                 .assertWarnings("10:47-10:64:warning:" + Bundle.ERR_ACLImpersonateHint(), "13:47-13:64:warning:" + Bundle.ERR_ACLImpersonateHint());
     }
 

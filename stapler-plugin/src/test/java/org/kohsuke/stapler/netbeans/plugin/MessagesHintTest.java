@@ -189,9 +189,9 @@ public class MessagesHintTest {
                 .assertVerbatimOutput("test/Messages.properties", "Test.what_would_you_say_if_i_ran_this_hint_ou=What would you say if I ran this hint out of turn? Would you stand up and revert the change on me?\n");
     }
 
-    // XXX existing key with similar name means uniquify (but preferably prompt user)
-    // XXX no Messages.properties initially
-    // XXX adds to existing Messages.properties with formatting intact
+    // TODO existing key with similar name means uniquify (but preferably prompt user)
+    // TODO no Messages.properties initially
+    // TODO adds to existing Messages.properties with formatting intact
 
     private URL cp() {
         URL cp = LocaleProvider.class.getProtectionDomain().getCodeSource().getLocation();
