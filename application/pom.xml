@@ -29,7 +29,30 @@
         </dependency>
         <dependency>
             <groupId>org.netbeans.cluster</groupId>
+            <artifactId>harness</artifactId>
+            <version>${netbeans.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-netbeans-libs-junit4</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.cluster</groupId>
             <artifactId>ide</artifactId>
+            <version>${netbeans.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.cluster</groupId>
+            <artifactId>extide</artifactId>
+            <version>${netbeans.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.cluster</groupId>
+            <artifactId>websvccommon</artifactId>
             <version>${netbeans.version}</version>
             <type>pom</type>
         </dependency>
