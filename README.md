@@ -51,9 +51,10 @@ To do:
 * Offer something like [jelly2groovy](https://github.com/slide/jelly2groovy) as a context menu action on Jelly views
 * hyperlink methods in `Messages` to their `Messages.properties` definitions
 * _Go to Stapler View/Model_ should prefer `*.jelly` to `*.properties`
-* `*.jelly` do not seem to show _History_ tab.
+* `*.jelly` do not seem to show _History_ tab, and do not correctly display updated VCS modification status.
 * `textbox.jelly` cannot be validated: tried to load nonexistent `hudson.util.jelly.MorphTagLibrary.xsd`
 * should prompt user for `Messages` key (if it can be detected that the hint is running interactively)
+* `st:include` should hyperlink the included page (when it can be statically determined)
 
 Also see:
 
