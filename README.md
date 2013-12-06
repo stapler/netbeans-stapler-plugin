@@ -6,6 +6,7 @@ See [NetBeans plugin for Stapler](https://wiki.jenkins-ci.org/display/JENKINS/Ne
 Upcoming in 1.5:
 * `*.jelly` tabs display the simple name of the corresponding model, e.g. `index.jelly [HelloWorldBuilder]`
 * `*.jelly` did not show _History_ tab, and did not correctly display updated VCS modification status
+* new versions of `hpi:run` publish `http://localhost:8080/jenkins/` rather than `http://localhost:8080/`; open the right one in the browser
 
 Implemented in 1.4:
 * plugin template based on 1.509.3
@@ -41,7 +42,6 @@ Implemented in 1.0:
 
 To do:
 
-* new versions of `hpi:run` should now open `http://localhost:8080/jenkins/` rather than `http://localhost:8080/` (ideally try to read `<contextPath>`/`${hpi.prefix}`)
 * Stapler view navigation should walk up the inheritance hierarchy if necessary
 * Stapler view creation should assume src/main/resources if there are multiple resource folders available
 * extend Output Window hyperlink to work from `exec:exec` on Winstone, `hudson-dev:run`, etc.

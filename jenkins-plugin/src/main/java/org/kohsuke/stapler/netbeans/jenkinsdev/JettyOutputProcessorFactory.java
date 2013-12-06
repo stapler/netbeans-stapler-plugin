@@ -72,13 +72,23 @@ public class JettyOutputProcessorFactory implements OutputProcessorFactory {
             return new String[] {"mojo-execute#jetty:run", "mojo-execute#hpi:run"}; // NOI18N
         }
 
-        private static final Pattern LINE = Pattern.compile(".*Started SelectChannelConnector @ 0[.]0[.]0[.]0:(\\d+)"); // NOI18N
+        private String contextPath = "/"; // default
+
+        private static final Pattern CONTEXT_PATH = Pattern.compile(".*Context path = (/.*)$"); // NOI18N
+        private static final Pattern CONNECTOR = Pattern.compile(".*Started SelectChannelConnector @ 0[.]0[.]0[.]0:(\\d+)"); // NOI18N
 
         public void processLine(String line, OutputVisitor visitor) {
-            Matcher m = LINE.matcher(line);
+            Matcher m = CONTEXT_PATH.matcher(line);
+            if (m.matches()) {
+                contextPath = m.group(1);
+                if (!contextPath.endsWith("/")) {
+                    contextPath += "/";
+                }
+            }
+            m = CONNECTOR.matcher(line);
             if (m.matches()) {
                 try {
-                    URLDisplayer.getDefault().showURL(new URL("http://localhost:" + m.group(1) + "/"));
+                    URLDisplayer.getDefault().showURL(new URL("http://localhost:" + m.group(1) + contextPath));
                 } catch (MalformedURLException ex) {
                     Exceptions.printStackTrace(ex);
                 }
