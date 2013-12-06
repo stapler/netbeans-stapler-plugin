@@ -49,7 +49,7 @@ import org.openide.util.Exceptions;
 /**
  * Hyperlinks e.g. {@code <f:textbox />}.
  */
-@MimeRegistration(service=HyperlinkProviderExt.class, mimeType=JellyTagSchemaCatalog.MIME_TYPE)
+@MimeRegistration(service=HyperlinkProviderExt.class, mimeType=JellyDataObject.MIME_TYPE)
 public class JellyHyperlinkProvider implements HyperlinkProviderExt {
 
     @Override public Set<HyperlinkType> getSupportedHyperlinkTypes() {

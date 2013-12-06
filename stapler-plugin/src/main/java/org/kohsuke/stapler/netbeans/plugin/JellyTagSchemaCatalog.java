@@ -50,7 +50,6 @@ import org.netbeans.api.annotations.common.StaticResource;
 import org.netbeans.modules.xml.catalog.spi.CatalogDescriptor;
 import org.netbeans.modules.xml.catalog.spi.CatalogListener;
 import org.netbeans.modules.xml.catalog.spi.CatalogReader;
-import org.openide.filesystems.MIMEResolver;
 import org.openide.util.ImageUtilities;
 import org.openide.util.NbBundle;
 import org.openide.util.lookup.ServiceProvider;
@@ -58,18 +57,9 @@ import org.openide.util.lookup.ServiceProvider;
 /**
  * Makes it possible to get completion on Jelly tags.
  */
-@MIMEResolver.NamespaceRegistration(
-    displayName="",
-    position=454,
-    mimeType=JellyTagSchemaCatalog.MIME_TYPE,
-    acceptedExtension="jelly",
-    elementName="jelly",
-    elementNS="jelly:core"
-)
 @ServiceProvider(service=CatalogReader.class, path="Plugins/XML/UserCatalogs", supersedes="org.netbeans.modules.hudson.maven.JellyTagSchemaCatalog")
 public class JellyTagSchemaCatalog implements CatalogReader, CatalogDescriptor {
 
-    public static final String MIME_TYPE = "text/x-jelly+xml";
     @StaticResource private static final String TAGLIB_XSD = "org/kohsuke/stapler/netbeans/plugin/taglib.xsd";
     @StaticResource private static final String CORE_XSD = "org/kohsuke/stapler/netbeans/plugin/jelly-schemas/core.xsd";
 

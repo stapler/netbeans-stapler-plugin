@@ -3,6 +3,10 @@ See [NetBeans plugin for Stapler](https://wiki.jenkins-ci.org/display/JENKINS/Ne
 
 [Plugin Portal downloads](http://plugins.netbeans.org/plugin/43938/)
 
+Upcoming in 1.5:
+* `*.jelly` tabs display the simple name of the corresponding model, e.g. `index.jelly [HelloWorldBuilder]`
+* `*.jelly` did not show _History_ tab, and did not correctly display updated VCS modification status
+
 Implemented in 1.4:
 * plugin template based on 1.509.3
 * hyperlinking custom Jelly tags (e.g. `<f:textbox/>`) to their taglib definitions (`textbox.jelly`)
@@ -51,7 +55,6 @@ To do:
 * Offer something like [jelly2groovy](https://github.com/slide/jelly2groovy) as a context menu action on Jelly views
 * hyperlink methods in `Messages` to their `Messages.properties` definitions
 * _Go to Stapler View/Model_ should prefer `*.jelly` to `*.properties`
-* `*.jelly` do not seem to show _History_ tab, and do not correctly display updated VCS modification status.
 * `textbox.jelly` cannot be validated: tried to load nonexistent `hudson.util.jelly.MorphTagLibrary.xsd`
 * should prompt user for `Messages` key (if it can be detected that the hint is running interactively)
 * `st:include` should hyperlink the included page (when it can be statically determined)
