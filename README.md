@@ -8,6 +8,7 @@ Upcoming in 1.5:
 * `*.jelly` did not show _History_ tab, and did not correctly display updated VCS modification status
 * new versions of `hpi:run` publish `http://localhost:8080/jenkins/` rather than `http://localhost:8080/`; open the right one in the browser
 * _Go to Stapler View/Model_ now prefers `*.jelly` to `*.properties`
+* Stapler model navigation did not work from a view of a nested class
 
 Implemented in 1.4:
 * plugin template based on 1.509.3
@@ -43,7 +44,7 @@ Implemented in 1.0:
 
 To do:
 
-* Stapler view navigation should walk up the inheritance hierarchy if necessary
+* Stapler view navigation should walk up the inheritance hierarchy if necessary, and consider a nested class if the caret is in one
 * Stapler view creation should assume src/main/resources if there are multiple resource folders available
 * extend Output Window hyperlink to work from `hudson-dev:run`
 * find usages, find subtypes, etc. inside and between Jelly pages

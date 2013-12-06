@@ -72,7 +72,7 @@ public final class StaplerViewAction implements ActionListener {
             if (file.hasExt("java")) { // file is the model
                 String name = sources.getResourceName(file);
                 assert name != null : file + " not really in " + sources;
-                String vname = name.replaceFirst("[.]java$", ""); // TODO if a nested class is selected, use that instead
+                String vname = name.replaceFirst("[.]java$", "");
                 FileObject viewF = sources.findResource(vname);
                 if (viewF == null) { // no view yet
                     Project p = FileOwnerQuery.getOwner(file);
@@ -127,12 +127,19 @@ public final class StaplerViewAction implements ActionListener {
                 FileObject folder = file.isFolder() ? file : file.getParent();
                 String name = sources.getResourceName(folder);
                 assert name != null : folder + " not really in " + sources;
-                FileObject model = sources.findResource(name./* nested class? */replaceFirst("[$].+$", "") + ".java");
-                if (model == null) {
-                    StatusDisplayer.getDefault().setStatusText("No model found matching " + name.replace('/', '.'));
-                    return;
+                while (true) {
+                    FileObject model = sources.findResource(name + ".java");
+                    if (model != null) {
+                        NbDocument.openDocument(DataObject.find(model), /* TODO nicer to jump to actual type */ 0, Line.ShowOpenType.OPEN, Line.ShowVisibilityType.FOCUS);
+                        break;
+                    }
+                    int slash = name.lastIndexOf('/');
+                    if (slash == -1) {
+                        StatusDisplayer.getDefault().setStatusText("No model found matching " + FileUtil.getFileDisplayName(folder));
+                        break;
+                    }
+                    name = name.substring(0, slash);
                 }
-                NbDocument.openDocument(DataObject.find(model), /* TODO nicer to jump to actual type */0, Line.ShowOpenType.OPEN, Line.ShowVisibilityType.FOCUS);
             }
         } catch (DataObjectNotFoundException x) {
             assert false : x;
