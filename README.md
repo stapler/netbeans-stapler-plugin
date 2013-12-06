@@ -3,7 +3,7 @@ See [NetBeans plugin for Stapler](https://wiki.jenkins-ci.org/display/JENKINS/Ne
 
 [Plugin Portal downloads](http://plugins.netbeans.org/plugin/43938/)
 
-Upcoming in 1.5:
+Implemented in 1.5:
 * `*.jelly` tabs display the simple name of the corresponding model, e.g. `index.jelly [HelloWorldBuilder]`
 * `*.jelly` did not show _History_ tab, and did not correctly display updated VCS modification status
 * new versions of `hpi:run` publish `http://localhost:8080/jenkins/` rather than `http://localhost:8080/`; open the right one in the browser
