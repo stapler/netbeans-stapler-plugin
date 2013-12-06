@@ -106,6 +106,13 @@ public final class StaplerViewAction implements ActionListener {
                             }
                         }
                     }
+                    // next, look for any view (not e.g. *.properties)
+                    for (FileObject view : viewF.getChildren()) {
+                        if (view.isData() && (view.hasExt("groovy") || view.hasExt("jelly"))) {
+                            NbDocument.openDocument(DataObject.find(view), 0, Line.ShowOpenType.OPEN, Line.ShowVisibilityType.FOCUS);
+                            return;
+                        }
+                    }
                     // OK, just look for anything here
                     for (FileObject view : viewF.getChildren()) {
                         if (view.isData()) {
