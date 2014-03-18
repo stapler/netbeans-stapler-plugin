@@ -126,7 +126,10 @@ public final class StaplerViewAction implements ActionListener {
             } else { // file is the view
                 FileObject folder = file.isFolder() ? file : file.getParent();
                 String name = sources.getResourceName(folder);
-                assert name != null : folder + " not really in " + sources;
+                if (name == null) {
+                    StatusDisplayer.getDefault().setStatusText(folder + " not really in " + sources);
+                    return;
+                }
                 while (true) {
                     FileObject model = sources.findResource(name + ".java");
                     if (model != null) {
