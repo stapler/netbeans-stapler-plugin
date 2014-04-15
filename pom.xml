@@ -4,7 +4,7 @@
 
     <groupId>org.kohsuke.stapler.netbeans</groupId>
     <artifactId>parent</artifactId>
-    <version>1.5</version>
+    <version>1.5.99</version>
     <packaging>pom</packaging>
 
     <name>Stapler/NetBeans</name>
@@ -15,7 +15,7 @@
     <licenses>
         <license>
             <name>MIT</name>
-            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <url>http://opensource.org/licenses/MIT</url>
         </license>
     </licenses>
 
@@ -37,7 +37,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>nbm-maven-plugin</artifactId>
-                    <version>3.11.1</version>
+                    <version>3.13</version>
                     <extensions>true</extensions>
                     <configuration>
                         <brandingToken>${brandingToken}</brandingToken>
@@ -91,7 +91,7 @@
     </modules>
 
     <properties>
-        <netbeans.version>RELEASE74</netbeans.version>
+        <netbeans.version>RELEASE80</netbeans.version>
         <brandingToken>nb</brandingToken>
     </properties>
 </project>
