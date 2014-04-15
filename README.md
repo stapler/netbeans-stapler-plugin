@@ -3,6 +3,9 @@ See [NetBeans plugin for Stapler](https://wiki.jenkins-ci.org/display/JENKINS/Ne
 
 [Plugin Portal downloads](http://plugins.netbeans.org/plugin/43938/)
 
+Upcoming in 1.6:
+* Always using the latest available version of the Jenkins plugin archetype.
+
 Implemented in 1.5:
 * `*.jelly` tabs display the simple name of the corresponding model, e.g. `index.jelly [HelloWorldBuilder]`
 * `*.jelly` did not show _History_ tab, and did not correctly display updated VCS modification status
