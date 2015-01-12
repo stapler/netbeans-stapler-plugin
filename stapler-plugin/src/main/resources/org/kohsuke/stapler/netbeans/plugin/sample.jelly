@@ -5,7 +5,7 @@
 <#include "../Licenses/license-${project.license}.txt">
 
 <?jelly escape-by-default='true'?>
-<!-- TODO add taglibs such as: xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" -->
-<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:i="jelly:fmt">
+<!-- TODO add taglibs such as: xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:i="jelly:fmt" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" -->
+<j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form">
     <!-- TODO -->
 </j:jelly>

@@ -5,6 +5,7 @@ See [NetBeans plugin for Stapler](https://wiki.jenkins-ci.org/display/JENKINS/Ne
 
 Upcoming in 1.6:
 * Always using the latest available version of the Jenkins plugin archetype.
+* More readily usable Jelly template.
 
 Implemented in 1.5:
 * `*.jelly` tabs display the simple name of the corresponding model, e.g. `index.jelly [HelloWorldBuilder]`
