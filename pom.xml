@@ -4,7 +4,7 @@
 
     <groupId>org.kohsuke.stapler.netbeans</groupId>
     <artifactId>parent</artifactId>
-    <version>1.5.99</version>
+    <version>1.6</version>
     <packaging>pom</packaging>
 
     <name>Stapler/NetBeans</name>
@@ -77,6 +77,36 @@
                                 <artifactId>java17</artifactId>
                                 <version>1.0</version>
                             </signature>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.gmaven</groupId>
+                <artifactId>groovy-maven-plugin</artifactId>
+                <version>2.0</version>
+                <executions>
+                    <execution>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <source>
+                                def mf = new File('${project.build.outputDirectory}', 'META-INF/MANIFEST.MF')
+                                if (mf.exists()) {
+                                    def mani = mf.withInputStream {is -> new java.util.jar.Manifest(is)}
+                                    def attr = mani.mainAttributes
+                                    def baseVer = attr.getValue('OpenIDE-Module-Specification-Version')
+                                    if (baseVer != null) {
+                                        // Trick originally posted as: https://disqus.com/home/discussion/axelfontaine/maven_release_plugin_the_final_nail_in_the_coffin_blog_axel_fontaine_software_development_expert_28/#comment-1593586324
+                                        // To support branches to some extent, use: $(git rev-list $(git merge-base master HEAD) --count).$(git rev-list ^master HEAD --count)
+                                        def extra = 'git rev-list HEAD --count'.execute(null, new File('${project.basedir}')).text.trim()
+                                        attr.putValue('OpenIDE-Module-Specification-Version', "${baseVer}.${extra}")
+                                        mf.withOutputStream {os -> mani.write(os)}
+                                    }
+                                }
+                            </source>
                         </configuration>
                     </execution>
                 </executions>
