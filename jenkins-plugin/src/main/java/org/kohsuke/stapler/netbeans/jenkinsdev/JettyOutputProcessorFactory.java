@@ -75,7 +75,7 @@ public class JettyOutputProcessorFactory implements OutputProcessorFactory {
         private String contextPath = "/"; // default
 
         private static final Pattern CONTEXT_PATH = Pattern.compile(".*Context path = (/.*)$"); // NOI18N
-        private static final Pattern CONNECTOR = Pattern.compile(".*Started SelectChannelConnector @ 0[.]0[.]0[.]0:(\\d+)"); // NOI18N
+        private static final Pattern CONNECTOR = Pattern.compile(".*Started SelectChannelConnector ?@ ?0[.]0[.]0[.]0:(\\d+)"); // NOI18N
 
         public void processLine(String line, OutputVisitor visitor) {
             Matcher m = CONTEXT_PATH.matcher(line);
