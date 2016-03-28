@@ -100,6 +100,16 @@
             <version>${netbeans.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.netbeans.modules</groupId>
+            <artifactId>org-netbeans-modules-profiler-api</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.modules</groupId>
+            <artifactId>org-netbeans-modules-profiler-nbimpl</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-modules-nbjunit</artifactId>
             <version>${netbeans.version}</version>

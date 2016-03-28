@@ -24,14 +24,15 @@
 
 package org.kohsuke.stapler.netbeans.jenkinsdev;
 
-import java.util.Collections;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 import org.netbeans.contrib.yenta.Yenta;
 
 public class Installer extends Yenta {
 
     @Override protected Set<String> friends() {
-        return Collections.singleton("org.netbeans.modules.maven");
+        return new HashSet<String>(Arrays.asList("org.netbeans.modules.maven", "org.netbeans.modules.profiler.api", "org.netbeans.modules.profiler.nbimpl"));
     }
 
 }

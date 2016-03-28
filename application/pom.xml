@@ -64,6 +64,12 @@
         </dependency>
         <dependency>
             <groupId>org.netbeans.cluster</groupId>
+            <artifactId>profiler</artifactId>
+            <version>${netbeans.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.cluster</groupId>
             <artifactId>nb</artifactId>
             <version>${netbeans.version}</version>
             <type>pom</type>
