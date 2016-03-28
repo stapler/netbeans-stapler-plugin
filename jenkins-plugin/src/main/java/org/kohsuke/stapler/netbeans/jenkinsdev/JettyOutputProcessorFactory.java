@@ -75,6 +75,7 @@ public class JettyOutputProcessorFactory implements OutputProcessorFactory {
         private String contextPath = "/"; // default
 
         private static final Pattern CONTEXT_PATH = Pattern.compile(".*Context path = (/.*)$"); // NOI18N
+        // TODO needs to be updated to match e.g. '2016-03-24 15:19:01.720:INFO:oejs.ServerConnector:main: Started ServerConnector@1afe9fbf{HTTP/1.1}{0.0.0.0:8080}' from jetty-9.2.15.v20160210
         private static final Pattern CONNECTOR = Pattern.compile(".*Started SelectChannelConnector ?@ ?0[.]0[.]0[.]0:(\\d+)"); // NOI18N
 
         public void processLine(String line, OutputVisitor visitor) {
