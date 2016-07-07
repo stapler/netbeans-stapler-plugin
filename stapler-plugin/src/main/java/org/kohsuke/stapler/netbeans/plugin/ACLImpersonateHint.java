@@ -45,6 +45,7 @@ import org.openide.util.NbBundle.Messages;
 public class ACLImpersonateHint {
 
     @TriggerPattern("org.acegisecurity.context.SecurityContextHolder.getContext().setAuthentication($auth)")
+    // TODO JENKINS-36494 rather suggest ACL.as; perhaps better to create jenkinsci/jenkins/core/src/main/resources/META-INF/upgrade/ACL.hint
     @Messages("ERR_ACLImpersonateHint=Use ACL.impersonate rather than setting authentication on the current security context")
     public static ErrorDescription hardcodedString(HintContext ctx) {
         return ErrorDescriptionFactory.forName(ctx, ctx.getPath(), Bundle.ERR_ACLImpersonateHint());
