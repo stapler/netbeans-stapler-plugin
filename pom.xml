@@ -93,7 +93,7 @@
                         </goals>
                         <configuration>
                             <source>
-                                def mf = new File('${project.build.outputDirectory}', 'META-INF/MANIFEST.MF')
+                                def mf = new File(project.build.outputDirectory, 'META-INF/MANIFEST.MF')
                                 if (mf.exists()) {
                                     def mani = mf.withInputStream {is -> new java.util.jar.Manifest(is)}
                                     def attr = mani.mainAttributes
@@ -101,7 +101,7 @@
                                     if (baseVer != null) {
                                         // Trick originally posted as: https://disqus.com/home/discussion/axelfontaine/maven_release_plugin_the_final_nail_in_the_coffin_blog_axel_fontaine_software_development_expert_28/#comment-1593586324
                                         // To support branches to some extent, use: $(git rev-list $(git merge-base master HEAD) --count).$(git rev-list ^master HEAD --count)
-                                        def extra = 'git rev-list HEAD --count'.execute(null, new File('${project.basedir}')).text.trim()
+                                        def extra = 'git rev-list HEAD --count'.execute(null, new File(project.basedir.path)).text.trim()
                                         attr.putValue('OpenIDE-Module-Specification-Version', "${baseVer}.${extra}")
                                         mf.withOutputStream {os -> mani.write(os)}
                                     }
