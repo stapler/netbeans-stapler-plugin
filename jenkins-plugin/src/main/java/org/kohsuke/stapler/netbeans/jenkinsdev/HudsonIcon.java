@@ -39,7 +39,6 @@
 package org.kohsuke.stapler.netbeans.jenkinsdev;
 
 import javax.swing.Icon;
-import org.netbeans.modules.maven.api.NbMavenProject;
 import org.netbeans.modules.maven.spi.nodes.SpecialIcon;
 import org.netbeans.spi.project.ProjectServiceProvider;
 import org.openide.util.ImageUtilities;
@@ -48,8 +47,7 @@ import org.openide.util.ImageUtilities;
 public class HudsonIcon implements SpecialIcon {
 
     @Override public Icon getIcon() {
-        // TODO switch to jenkins.png according to groupId
-        return ImageUtilities.loadImageIcon("org/netbeans/modules/hudson/ui/resources/instance.png", true);
+        return ImageUtilities.loadImageIcon("org/kohsuke/stapler/netbeans/jenkinsdev/jenkins.png", true);
     }
 
 }
