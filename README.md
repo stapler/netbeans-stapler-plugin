@@ -3,10 +3,13 @@ See [NetBeans plugin for Stapler](https://wiki.jenkins-ci.org/display/JENKINS/Ne
 
 [Plugin Portal downloads](http://plugins.netbeans.org/plugin/43938/)
 
-Upcoming in 1.6:
+## Changelog
+
+Implemented in 1.6:
+* Better icons.
 * Always using the latest available version of the Jenkins plugin archetype.
 * More readily usable Jelly template.
-* Fixed browser opening from `mvn hpi:run` to work with newer versions of Jetty.
+* Fixed browser opening from `mvn hpi:run` to work with some newer versions of Jetty (depends on version).
 
 Implemented in 1.5:
 * `*.jelly` tabs display the simple name of the corresponding model, e.g. `index.jelly [HelloWorldBuilder]`
