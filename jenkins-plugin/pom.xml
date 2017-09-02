@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.kohsuke.stapler.netbeans</groupId>
         <artifactId>parent</artifactId>
-        <version>1.7</version>
+        <version>1.8</version>
     </parent>
     <artifactId>jenkinsdev</artifactId>
     <packaging>nbm</packaging>
