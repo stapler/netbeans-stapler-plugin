@@ -31,10 +31,10 @@ import org.openide.util.NbBundle.Messages;
 
 public class JenkinsPluginTemplate {
     
-    @Messages("archetype=Jenkins Plugin")
+    @Messages("archetype=Empty Jenkins Plugin")
     @TemplateRegistration(folder=ArchetypeWizards.TEMPLATE_FOLDER, position=2012, iconBase="org/kohsuke/stapler/netbeans/jenkinsdev/jenkins.png", displayName="#archetype", description="archetype.html")
     public static WizardDescriptor.InstantiatingIterator<?> archetype() {
-        return ArchetypeWizards.definedArchetype("org.jenkins-ci.tools", "maven-hpi-plugin", "LATEST", "https://repo.jenkins-ci.org/public/", Bundle.archetype());
+        return ArchetypeWizards.definedArchetype("io.jenkins.archetypes", "empty-plugin", "LATEST", null, Bundle.archetype());
     }
 
     private JenkinsPluginTemplate() {}
