@@ -21,11 +21,6 @@
 
     <repositories>
         <repository>
-            <id>netbeans</id>
-            <name>NetBeans</name>
-            <url>http://bits.netbeans.org/nexus/content/groups/netbeans/</url>
-        </repository>
-        <repository>
             <id>repo.jenkins-ci.org</id>
             <url>http://repo.jenkins-ci.org/public/</url>
         </repository>
@@ -49,8 +44,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.0</version>
                     <configuration>
-                        <source>1.7</source>
-                        <target>1.7</target>
+                        <source>1.${java.level}</source>
+                        <target>1.${java.level}</target>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -64,7 +59,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>animal-sniffer-maven-plugin</artifactId>
-                <version>1.9</version>
+                <version>1.16</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -74,7 +69,7 @@
                         <configuration>
                             <signature>
                                 <groupId>org.codehaus.mojo.signature</groupId>
-                                <artifactId>java17</artifactId>
+                                <artifactId>java1${java.level}</artifactId>
                                 <version>1.0</version>
                             </signature>
                         </configuration>
@@ -121,7 +116,8 @@
     </modules>
 
     <properties>
-        <netbeans.version>RELEASE80</netbeans.version>
+        <netbeans.version>RELEASE82</netbeans.version>
         <brandingToken>nb</brandingToken>
+        <java.level>8</java.level>
     </properties>
 </project>

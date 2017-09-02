@@ -1,0 +1,31 @@
+<#assign licenseFirst = "/*">
+<#assign licensePrefix = " * ">
+<#assign licenseLast = " */">
+<#include "${project.licensePath}">
+
+<#if package?? && package != "">
+package ${package};
+
+</#if>
+import org.junit.ClassRule;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import org.junit.Rule;
+import org.jvnet.hudson.test.BuildWatcher;
+import org.jvnet.hudson.test.JenkinsRule;
+
+public class ${name} {
+
+    @ClassRule
+    public static BuildWatcher buildWatcher = new BuildWatcher();
+
+    @Rule
+    public JenkinsRule r = new JenkinsRule();
+
+    @Test
+    public void TODO() throws Exception {
+        fail("TODO");
+    }
+
+}
+

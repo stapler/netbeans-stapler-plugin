@@ -8,14 +8,17 @@ import org.netbeans.junit.NbTestCase;
 public class ApplicationTest extends NbTestCase {
 
     public static Test suite() {
-        return new ApplicationTest("testApplication"); // TODO disable pending http://netbeans.org/bugzilla/show_bug.cgi?id=225522
-        /*
         return NbModuleSuite.createConfiguration(ApplicationTest.class).
                 gui(false).
-                failOnMessage(Level.WARNING).
                 failOnException(Level.INFO).
+                enableClasspathModules(false). // #271423
+                clusters(".*").
+                /* TODO does not suffice to hide, e.g.: the modules [org.netbeans.modules.form.nb] use org.jdesktop.layout which is deprecated: Use javax.swing.GroupLayout instead. …
+                failOnMessage(Level.WARNING).
+                hideExtraModules(true).
+                enableModules("(?!org[.]netbeans[.]modules[.]masterfs[.](linux|macosx|windows)|org[.]netbeans[.]modules[.]extexecution[.]process[.]jdk9|org[.]netbeans[.]modules[.]form[.]nb).*").
+                */
                 suite();
-        */
     }
 
     public ApplicationTest(String n) {
@@ -23,7 +26,7 @@ public class ApplicationTest extends NbTestCase {
     }
 
     public void testApplication() {
-        // pass if there are merely no warnings/exceptions
+        // pass if there are merely no exceptions
     }
 
 }
