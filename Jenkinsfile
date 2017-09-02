@@ -1,3 +1,4 @@
+// https://ci.jenkins.io/job/Stapler/job/netbeans-stapler-plugin/
 pipeline {
     options {
         buildDiscarder(logRotator(numToKeepStr: '20'))
