@@ -52,6 +52,7 @@ Implemented in 1.0:
 
 To do:
 
+* For new plugin wizard, `version` is initially 1 and `artifactId` wrong.
 * Stapler view navigation should walk up the inheritance hierarchy if necessary, and consider a nested class if the caret is in one
 * Stapler view creation should assume src/main/resources if there are multiple resource folders available
 * extend Output Window hyperlink to work from `hudson-dev:run`
