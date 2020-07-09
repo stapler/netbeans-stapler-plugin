@@ -59,48 +59,42 @@ import org.openide.util.lookup.ServiceProvider;
 /**
  * Browses a Jetty server that has been started.
  */
-@ServiceProvider(service=OutputProcessorFactory.class, supersedes="org.netbeans.modules.hudson.maven.JettyOutputProcessorFactory")
+@ServiceProvider(service=OutputProcessorFactory.class)
 public class JettyOutputProcessorFactory implements OutputProcessorFactory {
 
-    public Set<OutputProcessor> createProcessorsSet(Project project) {
+    @Override public Set<OutputProcessor> createProcessorsSet(Project project) {
         return Collections.<OutputProcessor>singleton(new JettyOutputProcessor());
     }
 
     private static final class JettyOutputProcessor implements OutputProcessor {
 
-        public String[] getRegisteredOutputSequences() {
-            return new String[] {"mojo-execute#jetty:run", "mojo-execute#hpi:run"}; // NOI18N
+        private URL url;
+
+        @Override public String[] getRegisteredOutputSequences() {
+            return new String[] {/*"mojo-execute#jetty:run", */"mojo-execute#hpi:run"}; // NOI18N
         }
 
-        private String contextPath = "/"; // default
+        private static final Pattern BROWSE_TO = Pattern.compile("===========> Browse to: (http://[^ ]+/)"); // NOI18N
+        private static final String RUNNING = "Jenkins is fully up and running"; // NOI18N
 
-        private static final Pattern CONTEXT_PATH = Pattern.compile(".*Context path = (/.*)$"); // NOI18N
-        // TODO needs to be updated to match e.g. '2016-03-24 15:19:01.720:INFO:oejs.ServerConnector:main: Started ServerConnector@1afe9fbf{HTTP/1.1}{0.0.0.0:8080}' from jetty-9.2.15.v20160210
-        private static final Pattern CONNECTOR = Pattern.compile(".*Started SelectChannelConnector ?@ ?0[.]0[.]0[.]0:(\\d+)"); // NOI18N
-
-        public void processLine(String line, OutputVisitor visitor) {
-            Matcher m = CONTEXT_PATH.matcher(line);
-            if (m.matches()) {
-                contextPath = m.group(1);
-                if (!contextPath.endsWith("/")) {
-                    contextPath += "/";
-                }
-            }
-            m = CONNECTOR.matcher(line);
+        @Override public void processLine(String line, OutputVisitor visitor) {
+            Matcher m = BROWSE_TO.matcher(line);
             if (m.matches()) {
                 try {
-                    URLDisplayer.getDefault().showURL(new URL("http://localhost:" + m.group(1) + contextPath));
+                    url = new URL(m.group(1));
                 } catch (MalformedURLException ex) {
                     Exceptions.printStackTrace(ex);
                 }
+            } else if (url != null && line.contains(RUNNING)) {
+                URLDisplayer.getDefault().showURL(url);
             }
         }
 
-        public void sequenceStart(String sequenceId, OutputVisitor visitor) {}
+        @Override public void sequenceStart(String sequenceId, OutputVisitor visitor) {}
 
-        public void sequenceEnd(String sequenceId, OutputVisitor visitor) {}
+        @Override public void sequenceEnd(String sequenceId, OutputVisitor visitor) {}
 
-        public void sequenceFail(String sequenceId, OutputVisitor visitor) {}
+        @Override public void sequenceFail(String sequenceId, OutputVisitor visitor) {}
 
     }
 
