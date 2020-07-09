@@ -10,19 +10,19 @@
     <name>Stapler/NetBeans</name>
     <organization>
         <name>CloudBees</name>
-        <url>http://www.cloudbees.com/</url>
+        <url>https://www.cloudbees.com/</url>
     </organization>
     <licenses>
         <license>
             <name>MIT</name>
-            <url>http://opensource.org/licenses/MIT</url>
+            <url>https://opensource.org/licenses/MIT</url>
         </license>
     </licenses>
 
     <repositories>
         <repository>
             <id>repo.jenkins-ci.org</id>
-            <url>http://repo.jenkins-ci.org/public/</url>
+            <url>https://repo.jenkins-ci.org/public/</url>
         </repository>
     </repositories>
 
