@@ -116,7 +116,7 @@
     </modules>
 
     <properties>
-        <netbeans.version>RELEASE82</netbeans.version>
+        <netbeans.version>RELEASE121</netbeans.version>
         <brandingToken>nb</brandingToken>
         <java.level>8</java.level>
     </properties>
