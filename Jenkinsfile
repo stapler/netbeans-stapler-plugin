@@ -6,14 +6,14 @@ pipeline {
     }
     agent {
         docker {
-            image 'maven:3.5.0-jdk-8'
+            image 'maven:3.6.3-jdk-11'
             label 'docker'
         }
     }
     stages {
         stage('main') {
             steps {
-                sh 'mvn -B -s settings-azure.xml -Dmaven.test.failure.ignore clean verify'
+                sh 'mvn -B -ntp -Dmaven.test.failure.ignore clean verify'
             }
             post {
                 success {

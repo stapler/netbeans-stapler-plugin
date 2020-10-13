@@ -28,13 +28,14 @@ import hudson.security.ACL;
 import java.net.URL;
 import org.acegisecurity.Authentication;
 import org.junit.Test;
+import org.kohsuke.stapler.StaplerProxy;
 import org.netbeans.modules.java.hints.test.api.HintTest;
 import org.openide.filesystems.FileUtil;
 
 public class ACLImpersonateHintTest {
 
     @Test public void warningIssued() throws Exception {
-        HintTest.create().classpath(cpify(ACL.class), cpify(Authentication.class))
+        HintTest.create().classpath(cpify(ACL.class), cpify(Authentication.class), cpify(StaplerProxy.class))
                 .input("package test;\n"
                 + "import hudson.model.AbstractProject;\n"
                 + "import hudson.security.ACL;\n"
