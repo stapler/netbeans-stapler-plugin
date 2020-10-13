@@ -146,12 +146,6 @@
             <version>${netbeans.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.frgaal</groupId>
-            <artifactId>compiler</artifactId>
-            <version>14.0.2</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-modules-java-hints-test</artifactId>
             <version>${netbeans.version}</version>
