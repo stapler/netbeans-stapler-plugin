@@ -91,6 +91,9 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>nbm-maven-plugin</artifactId>
+                <configuration>
+                    <verifyIntegrity>false</verifyIntegrity> <!-- TODO pending exclusion of org.netbeans.modules.java.source.nbjavac etc. -->
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
