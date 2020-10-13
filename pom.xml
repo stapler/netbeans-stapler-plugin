@@ -97,6 +97,5 @@
     <properties>
         <netbeans.version>RELEASE121</netbeans.version>
         <brandingToken>nb</brandingToken>
-        <netbeans.hint.jdkPlatform>JDK_11</netbeans.hint.jdkPlatform>
     </properties>
 </project>
